@@ -1,0 +1,159 @@
+ 
+{% load static%}
+
+
+<!DOCTYPE html>
+ 
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mediverse+</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!--  css file link  -->
+    <link rel="stylesheet" href="{% static 'css/hero.css' %}">
+
+    
+<style>
+    .off {
+        text-align: center;font-size: 30px;padding: 20px;
+    
+    }
+     
+        </style>
+</head>
+
+<body>
+    
+                                   <!-- header section starts  -->
+
+<header class="header">
+
+    <a href="#" class="logo"><img src="{% static 'image/logo.png' %}" width="100px"> </a>
+
+    <nav class="navbar">
+        <a href="#">home</a>
+        <a href="#">Shop</a>
+        <a href="#">Blog</a>
+        <a href="#">Our Services</a>
+        <a href="#">Portfolio</a>
+        <a href="#">About Us</a>   
+        <a href="#">Contact Us</a>
+    </nav>
+
+    <div class="icons">
+        <div class="fas fa-bars" id="menu-btn"></div>
+        <div class="fas fa-shopping-cart" id="cart-btn"></div>
+        <div class="fas fa-user" id="login-btn"></div>
+    </div>
+
+
+</header>
+
+                                       <!-- header section ends -->
+
+{% block content %}
+
+{% endblock  %} 
+
+ <section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="{% static 'image/log.png' %}" width="130px" height="130px">
+            <p>Developed with your needs in mind,<br> delivering on our promise to provide <br>more affordable skin care solutions.</p>
+            
+        </div>
+
+        
+
+        <div class="box">
+            <h3>QUICK LINKS</h3>
+            <a href="#" class="links"> <i class="fas fa-arrow-right"></i> Home </a>
+            <a href="#" class="links"> <i class="fas fa-arrow-right"></i> About us </a>
+            <a href="#" class="links"> <i class="fas fa-arrow-right"></i> Contact Us </a>
+            <a href="#" class="links"> <i class="fas fa-arrow-right"></i> Blog</a>
+            
+            
+        </div>
+
+        <div class="box">
+            <h3>CONTACT</h3>
+            <a href="#" class="links"> <i class="fas fa-map-marker-alt"></i> DilliBazar, Kathmandu </a>
+            <a href="#" class="links"> <i class="fas fa-envelope"></i> mediserv@gmail.com </a>
+            <a href="#" class="links"> <i class="fas fa-phone"></i> +977 9826723631 </a>
+            
+           
+        </div>
+
+        
+
+    </div>
+
+    
+</section>
+<div class="credit"> @2022 Copyright: mediserv.com   </div>
+
+
+  
+
+
+
+<script>
+
+// main js
+
+let navbar = document.querySelector('.navbar');
+
+document.querySelector('#menu-btn').onclick = () =>{
+    navbar.classList.toggle('active');
+    searchForm.classList.remove('active');
+    shoppingCart.classList.remove('active');
+    loginForm.classList.remove('active');
+}
+
+window.onscroll = () =>{
+    searchForm.classList.remove('active');
+    shoppingCart.classList.remove('active');
+    loginForm.classList.remove('active');
+    navbar.classList.remove('active');
+}
+
+var swiper = new Swiper(".product-slider", {
+    loop:true,
+    spaceBetween: 20,
+    autoplay: {
+        delay: 7500,
+        disableOnInteraction: false,
+    },
+    centeredSlides: true,
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+      },
+      768: {
+        slidesPerView: 2,
+      },
+      1020: {
+        slidesPerView: 3,
+      },
+    },
+});
+
+
+</script>
+
+
+</body>
+
+</html>
+ 
+                                        
