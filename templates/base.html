@@ -1,7 +1,4 @@
- 
 {% load static%}
-
-
 <!DOCTYPE html>
  
 <html lang="en">
@@ -10,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mediverse+</title>
+    <title>Mediserv+</title>
 
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -39,7 +36,7 @@
     <a href="#" class="logo"><img src="{% static 'image/logo.png' %}" width="100px"> </a>
 
     <nav class="navbar">
-        <a href="#">home</a>
+        <a href="#">Home</a>
         <a href="#">Shop</a>
         <a href="#">Blog</a>
         <a href="#">Our Services</a>
@@ -51,7 +48,7 @@
     <div class="icons">
         <div class="fas fa-bars" id="menu-btn"></div>
         <div class="fas fa-shopping-cart" id="cart-btn"></div>
-        <div class="fas fa-user" id="login-btn"></div>
+        <a href="{% url 'Home:login' %}"><div class="fas fa-user" id="login-btn"></div></a>
     </div>
 
 

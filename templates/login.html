@@ -1,3 +1,4 @@
+{% load static%}
 <!doctype html>
 <html lang="en">
 
@@ -13,7 +14,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 
-    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <title>Login</title>
 </head>
 
@@ -26,16 +27,17 @@
 
                     <div class="col-lg-7 px-5 pt-5">
                         <h1 class="font-weight-bold py-3 text-center">LOGIN </h1>
-                        <form>
+                        <form method="post" enctype="multipart/form-data" action="{% url 'Home:login' %}">
+                            {% csrf_token %}
 
                             <div class="form-outline mb-4">
                                 <input type="text" id="form3Example8" class="form-control form-control-lg"
-                                    placeholder="Username" />
+                                    placeholder="Username" required name="username"/>
 
                             </div>
                             <div class="form-outline mb-4">
-                                <input type="text" id="form3Example8" class="form-control form-control-lg"
-                                    placeholder="Password" />
+                                <input type="password" id="form3Example8" class="form-control form-control-lg"
+                                    placeholder="Password" required name="password"/>
 
                             </div>
                             <p><input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
@@ -47,7 +49,7 @@
                                     <button type="button" class="btn">SIGN IN</button>
                                 </div>
                             </div>
-                            <p>Don't Have An Account? <a href="#">Sign In</a></p>
+                            <p>Don't Have any account? <a href="/register/">Signup Now</a></p>
 
                         </form>
                     </div>
@@ -55,13 +57,13 @@
                         <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active" data-bs-interval="2000">
-                                    <img src="/image/MEDISERV+ login image.png" class="d-block ">
+                                    <img src="{% static 'image/MEDISERV+ login image.png' %}"  class="d-block" >
                                 </div>
                                 <div class="carousel-item" data-bs-interval="2000">
-                                    <img src="/image/doctor-clinic.webp" class="d-block ">
+                                    <img src= "{% static 'image/doctor-clinic.webp' %}" class="d-block ">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="/image/logo (1).png" class="d-block ">
+                                    <img src= "{% static 'image/logo (1).png' %}" class="d-block ">
                                 </div>
                             </div>
                             <!-- <button class="carousel-control-prev" type="button"
