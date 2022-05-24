@@ -7,6 +7,11 @@ from django.contrib.auth import  authenticate , get_user_model , login
 from django.contrib.auth.models import User
 from Home.forms import UserResgistrationForm
 
+from .models import ( 
+		Portfolio,
+)
+from django.views import generic
+
 User = get_user_model()
 
 def home(request):
@@ -60,3 +65,34 @@ def login_fn(request):
 
 
 
+
+
+
+
+
+
+
+class PortfolioView(generic.ListView):
+	model = Portfolio
+	template_name = "main/portfolio.html"
+	paginate_by = 10
+
+	def get_queryset(self):
+		return super().get_queryset().filter(is_active=True)
+
+
+class PortfolioDetailView(generic.DetailView):
+	model = Portfolio
+	template_name = "main/portfolio-detail.html"
+
+
+def allportfolio(request):
+	portfolios = Portfolio.objects.all()
+	return render(request,"main/allportfolios.html",{'portfolios':portfolios})
+
+class allPortfolioView(generic.ListView):
+	model = Portfolio
+	template_name = "main/allportfolios.html"
+	paginate_by =2
+ 
+ 
