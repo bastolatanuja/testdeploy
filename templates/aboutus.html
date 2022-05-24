@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mediverse+</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+  <!-- font awesome cdn link  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <!-- custom css file link  -->
+  <link rel="stylesheet" href="/css/hero (1).css">
+  <link rel="stylesheet" href="/css/team.css">
+</head>
+
+<body>
+
+  <!-- header section starts  -->
+
+  <header class="header">
+
+    <a href="#" class="logo"><img src="/image/logo (1).png" width="100px"> </a>
+
+    <nav class="navbar">
+      <a href="{% url 'home' %}">home</a>
+      <a href="{% url 'shop' %}">Shop</a>
+      <a href="{% url 'blog' %}">Blog</a>
+      <a href="{% url 'ourservice' %}">Our Services</a>
+      <a href="{% url 'portfolio' %}">Portfolio</a>
+      <a href="{% url 'aboutus' %}">About Us</a>
+      <a href="{% url 'contactus' %}">Contact Us</a>
+    </nav>
+
+    <div class="icons">
+      <div class="fas fa-bars" id="menu-btn"></div>
+      <div class="fas fa-shopping-cart" id="cart-btn"></div>
+      <div class="fas fa-user" id="login-btn"></div>
+    </div>
+
+
+  </header>
+
+  <!-- Team section starts  -->
+
+  <div class="wrapper">
+    <h1>Meet Our Team</h1>
+    <div class="team">
+      <div class="team_member">
+        <div class="team_img">
+          <img src="{% static 'image/logo.png' %}" alt="Team_image">
+        </div>
+        <h3>Tanuja Bastola</h3>
+        <p class="role"><b>Scrum Master</b></p>
+        <p></p>
+      </div>
+      <div class="team_member">
+        <div class="team_img">
+          <img src="/image/anup.jpg" alt="Team_image">
+        </div>
+        <h3>Anup Burlakoti</h3>
+        <p class="role"><b>Member</b></p>
+        <p></p>
+      </div>
+
+    </div>
+  </div>
+  <div class="wrapper20">
+    <div class="team">
+      <div class="team_member">
+        <div class="team_img">
+          <img src="/image/" alt="Team_image">
+        </div>
+        <h3>Kishan Prasad Jaiswal</h3>
+        <p class="role"><b>Member</b></p>
+        <p></p>
+      </div>
+
+      <div class="team_member">
+        <div class="team_img">
+          <img src="/image/ishwor.jpg" alt="Team_image">
+        </div>
+        <h3>Ishwor Khadka</h3>
+        <p class="role"><b>Member</b></p>
+        <p></p>
+      </div>
+
+      <div class="team_member">
+        <div class="team_img">
+          <img src="/image/nitesh.jpg" alt="Team_image">
+        </div>
+        <h3>Nitesh Yadav</h3>
+        <p class="role"><b>Member</b></p>
+        <p></p>
+      </div>
+    </div>
+  </div>
+  <!-- Team section end  -->
+
+  <!-- footer section starts  -->
+
+  <section class="footer">
+
+    <div class="box-container">
+
+      <div class="box">
+        <img src="/image/logo (1).png" width="100px" height="100px">
+        <p>Developed with your needs in mind,<br> delivering on our promise to provide <br>more affordable skin care
+          solutions.</p>
+
+      </div>
+
+
+
+      <div class="box">
+        <h3>QUICK LINKS</h3>
+        <a href="#" class="links"> <i class="fas fa-arrow-right"></i> Home </a>
+        <a href="#" class="links"> <i class="fas fa-arrow-right"></i> About us </a>
+        <a href="#" class="links"> <i class="fas fa-arrow-right"></i> Contact Us </a>
+        <a href="#" class="links"> <i class="fas fa-arrow-right"></i> Blog</a>
+
+
+      </div>
+
+      <div class="box">
+        <h3>CONTACT</h3>
+        <a href="#" class="links"> <i class="fas fa-map-marker-alt"></i> DilliBazar, Kathmandu </a>
+        <a href="#" class="links"> <i class="fas fa-envelope"></i> mediserv@gmail.com </a>
+        <a href="#" class="links"> <i class="fas fa-phone"></i> +977 9826723631 </a>
+
+
+      </div>
+
+
+
+    </div>
+    
+
+    <div class="credit"> @2022 Copyright: mediserv.com </div>
+    
+  </section>
+
+
+  <!-- footer section ends -->
+
+
+  <script src="{% static  'https://unpkg.com/swiper@7/swiper-bundle.min.js'%}"></script>
+
+  <!-- custom js file link  -->
+  <script src="{%static 'js/script.js' %}"></script>
+
+</body>
+
+</html>
