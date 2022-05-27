@@ -1,4 +1,4 @@
-{% extends 'main/baseportfolio.html' %}
+{% extends 'baseportfolio.html' %}
 {% load static %}
 
 <!-- ================================
@@ -56,7 +56,7 @@ Start Content
               {% for obj in object_list %}
               <div class="col-md-6 pColMain">
                 <div class="pCol">
-                  <a href="{% url 'main:portfolio' slug=obj.slug %}" >
+                  <a href="{% url 'Home:portfolio' slug=obj.slug %} " >
                   <img src="{{obj.image.url}}" alt="..." class="pImg">
                   </a>
                 </div>
