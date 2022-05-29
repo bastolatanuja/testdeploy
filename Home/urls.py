@@ -15,5 +15,7 @@ urlpatterns = [
 	path('portfolio/<slug:slug>', views.PortfolioDetailView.as_view(), name="portfolio"),
 	  
 	path('allportfolios/',views.allPortfolioView.as_view(),name="allportfolios"),
+   path('blog/',views.blog.as_view(),name="myblog"),
+   path('blog/<slug:slug>', views.BlogDetailView.as_view(), name="blog"),
 ]
 

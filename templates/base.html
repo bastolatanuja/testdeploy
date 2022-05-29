@@ -16,6 +16,7 @@
 
     <!--  css file link  -->
     <link rel="stylesheet" href="{% static 'css/hero.css' %}">
+    <!--<link rel="stylesheet" href="{% static 'css/style.css' %}">-->
 
     
 <style>
@@ -38,9 +39,9 @@
     <nav class="navbar">
         <a href="#">Home</a>
         <a href="#">Shop</a>
-        <a href="#">Blog</a>
+        <a href="{%url 'Home:myblog' %}">Blog</a>
         <a href="#">Our Services</a>
-        <a href="">Portfolio</a>
+        <a href="#">Portfolio</a>
         <a href="#">About Us</a>   
         <a href="#">Contact Us</a>
     </nav>

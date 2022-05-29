@@ -9,6 +9,7 @@ from Home.forms import UserResgistrationForm
 
 from .models import ( 
 		Portfolio,
+        Blog,
 )
 from django.views import generic
 
@@ -95,4 +96,13 @@ class allPortfolioView(generic.ListView):
 	template_name = "allportfolios.html"
 	paginate_by =2
  
- 
+class blog(generic.ListView):
+    model= Blog
+    template_name="blog.html"
+
+    def get_queryset(self):
+        return super().get_queryset().filter(is_active=True)
+
+class BlogDetailView(generic.DetailView):
+	model = Blog
+	template_name = "Home/blog-detail.html"
