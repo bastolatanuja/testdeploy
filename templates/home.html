@@ -2,7 +2,7 @@
 
 {% block content %} 
 {% load static%}
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                                                                          
 <div class="row">
     <div class="col-2">
@@ -20,7 +20,7 @@
 </div>
 </div>
 
-
+{% comment %} 
                                                <!-- offer section start -->
 
 
@@ -57,7 +57,7 @@
   <span class="dot"></span> 
 </div>   
 
-                                                <!-- offer section end  -->
+                                                <!-- offer section end  --> {% endcomment %}
 
 
                                                  <!-- features section starts  -->
@@ -181,6 +181,56 @@
 
                                            <!-- Medicine section ends -->
 
+                                           <!-- Social section start -->
+
+<style>
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+   color: white;
+}
+
+.fa-twitter {
+   color: white;
+}
+.fa-instagram {
+     color: white;
+  }
+
+.Socialicon{
+    text-align: center;
+    width:110%;
+    background-color:  gray;
+    padding-top: 2.5rem;
+    font-size: 2rem;
+    color:black;
+    border-top: var(--border);
+    margin-bottom: 1rem;
+}
+</style>
+<div class="Socialicon">
+<h2><b>Get Conneted With Us...     
+   
+<!-- Add font awesome icons -->
+<a href="#" class="fa fa-facebook"></a>              
+<a href="#" class="fa fa-instagram"></a>
+<a href="#" class="fa fa-twitter"></a>
+
+</h2>
+</div>   
+
+                                  <!-- Social section ends -->
 
                               <!-- script for offer section-->
 

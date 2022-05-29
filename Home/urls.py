@@ -11,10 +11,7 @@ urlpatterns = [
    
    
    
-   
-   
-   
-   path('portfolios/', views.PortfolioView.as_view(), name="portfolios"),
+   path('portfolio/', views.PortfolioView.as_view(), name="portfolios"),
 	path('portfolio/<slug:slug>', views.PortfolioDetailView.as_view(), name="portfolio"),
 	  
 	path('allportfolios/',views.allPortfolioView.as_view(),name="allportfolios"),

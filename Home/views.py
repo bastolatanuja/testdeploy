@@ -74,7 +74,7 @@ def login_fn(request):
 
 class PortfolioView(generic.ListView):
 	model = Portfolio
-	template_name = "main/portfolio.html"
+	template_name = "portfolio.html"
 	paginate_by = 10
 
 	def get_queryset(self):
@@ -83,16 +83,16 @@ class PortfolioView(generic.ListView):
 
 class PortfolioDetailView(generic.DetailView):
 	model = Portfolio
-	template_name = "main/portfolio-detail.html"
+	template_name = "portfolio-detail.html"
 
 
 def allportfolio(request):
 	portfolios = Portfolio.objects.all()
-	return render(request,"main/allportfolios.html",{'portfolios':portfolios})
+	return render(request,"allportfolios.html",{'portfolios':portfolios})
 
 class allPortfolioView(generic.ListView):
 	model = Portfolio
-	template_name = "main/allportfolios.html"
+	template_name = "allportfolios.html"
 	paginate_by =2
  
  

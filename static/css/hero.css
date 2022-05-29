@@ -56,11 +56,12 @@ section{
     display: inline-block;
     padding:.8rem 3rem;
     font-size: 1.7rem;
-    border-radius: .5rem;
+    border-radius: 2.5rem;
     border:.2rem solid var(--black);
     color:var(--black);
     cursor: pointer;
     background-color: rgb(250, 76, 76);
+
 }
 .btnstart{
     margin-top: 3rem;
@@ -290,7 +291,7 @@ section{
 /* This is for division of two section */
 .col-2{
     flex-basis:54%;
-    
+    margin-top: -20px;
     margin-left: -5%;
     width: 500px;
     height: 500px;
@@ -402,6 +403,7 @@ section{
     outline-offset: -1rem;
     text-align: center;
     box-shadow: var(--box-shadow);
+    border-radius: 25px;
 }
 
 .features .box-container .box:hover{
@@ -446,6 +448,7 @@ section{
     outline-offset: -1rem;
     text-align: center;
     box-shadow: var(--box-shadow);
+    border-radius: 25px;
 }
 
 .skin .box-container .box:hover{
@@ -492,6 +495,7 @@ section{
     outline-offset: -1rem;
     text-align: center;
     box-shadow: var(--box-shadow);
+    border-radius: 25px;
 }
 
 .medicine .box-container .box:hover{
@@ -605,22 +609,13 @@ section{
     text-align: center;
     width:110%;
     background-color: rgb(89, 179, 89);
-    padding-top: 0.5rem;
-    font-size: 2rem;
+    padding-top: 2.5rem;
+    font-size: 3rem;
     color:black;
     border-top: var(--border);
     margin-bottom: 1rem;
 }
-.creditup{
-    text-align: center;
-    width:110%;
-    background-color: rgb(120, 122, 120);
-    padding-top: 2rem;
-    font-size: 2rem;
-    color:black;
-    border-top: var(--border);
-    margin-bottom: 1rem;
-}
+ 
 .row{
     display:flex;
     padding: 92px;
