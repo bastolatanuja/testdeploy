@@ -56,11 +56,12 @@ section{
     display: inline-block;
     padding:.8rem 3rem;
     font-size: 1.7rem;
-    border-radius: .5rem;
+    border-radius: 2.5rem;
     border:.2rem solid var(--black);
     color:var(--black);
     cursor: pointer;
     background-color: rgb(250, 76, 76);
+
 }
 .btnstart{
     margin-top: 3rem;
