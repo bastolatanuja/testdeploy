@@ -4,13 +4,18 @@ from Home import views
 app_name = "Home"
 
 urlpatterns = [
-   path('home/',views.home, name='home'),
+   path('',views.home, name='home'),
    path("register/",views.register, name='register'),
    path('login/', views.login_fn, name='login'),
    path('home_fn/',views.home_fn, name='home_fn'),
    
    
+<<<<<<< HEAD
    path('', views.PortfolioView.as_view(), name="portfolio"),
+=======
+   
+   path('portfolio/', views.PortfolioView.as_view(), name="portfolio"),
+>>>>>>> 72ac73ba92d6fdbfcf71145db766d245c7f241c8
    path('portfolio/<slug:slug>', views.PortfolioDetailView.as_view(), name="portfolio"),
 	  
     
