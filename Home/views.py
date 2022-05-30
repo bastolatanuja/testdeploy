@@ -73,14 +73,6 @@ def login_fn(request):
         return render(request, 'login.html')   
 
 
-
-
-
-
-
-
-
-
 class PortfolioView(generic.DetailView):
 	model = Portfolio
 	template_name = "Home/portfolio.html"
@@ -96,8 +88,6 @@ class PortfolioDetailView(generic.DetailView):
 
 
  
- 
- 
 class blog(generic.ListView):
     model= Blog
     template_name="blog.html"
@@ -108,10 +98,6 @@ class blog(generic.ListView):
 class BlogDetailView(generic.DetailView):
 	model = Blog
 	template_name = "Home/blog-detail.html"
-
-
-
-
 
 
 def profileView(request):

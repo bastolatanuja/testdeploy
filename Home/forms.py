@@ -17,9 +17,6 @@ class UserResgistrationForm(forms.ModelForm):
         return self.user.id
     
     
-    
-    
- 
 class editprofileForm(UserChangeForm):
 
 	class Meta:

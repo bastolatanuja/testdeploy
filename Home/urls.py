@@ -10,7 +10,6 @@ urlpatterns = [
    path('home_fn/',views.home_fn, name='home_fn'),
    
    
-   
    path('', views.PortfolioView.as_view(), name="portfolio"),
    path('portfolio/<slug:slug>', views.PortfolioDetailView.as_view(), name="portfolio"),
 	  
