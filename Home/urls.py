@@ -11,22 +11,20 @@ urlpatterns = [
    
    
    
-   path('portfolio/', views.PortfolioView.as_view(), name="portfolios"),
+   path('', views.PortfolioView.as_view(), name="portfolio"),
    path('portfolio/<slug:slug>', views.PortfolioDetailView.as_view(), name="portfolio"),
 	  
-   path('allportfolios/',views.allPortfolioView.as_view(),name="allportfolios"),
+    
    path('blog/',views.blog.as_view(),name="myblog"),
    path('blog/<slug:slug>', views.BlogDetailView.as_view(), name="blog"),
    
    
-   
-   path('',views.profileView,name="profile"),
+   path('profile/',views.profileView,name="profile"),
    path('editprofile/',views.editprofileView.as_view(),name="editprofile"),
-	 
 	path('changedp/',views.editDPView,name="changedp"),
 	path('updateDP/',views.dpChangeView.as_view(),name="updateDP"),
 	path('deletedp/',views.SetUserImageDefault,name="deletedp"),
-	path('alluserprofiles/',views.allUserProfiles.as_view(),name="alluserprofiles"),
+	 
  
 	path('updateUserProfile/<int:pk>',views.updateUserProfile.as_view(),name="updateUserProfile"),
  
