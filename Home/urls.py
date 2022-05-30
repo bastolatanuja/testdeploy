@@ -8,15 +8,15 @@ urlpatterns = [
    path("register/",views.register, name='register'),
    path('login/', views.login_fn, name='login'),
    path('home_fn/',views.home_fn, name='home_fn'),
+   path('aboutus/',views.about_us, name='aboutus'),
+   path('contactus/',views.contact_us, name='contactus'),
+   path("logout/", views.logout, name='logout'),
    
    
-<<<<<<< HEAD
-   path('', views.PortfolioView.as_view(), name="portfolio"),
-=======
+   # path('', views.PortfolioView.as_view(), name="portfolio"),
    
    path('portfolio/', views.PortfolioView.as_view(), name="portfolio"),
->>>>>>> 72ac73ba92d6fdbfcf71145db766d245c7f241c8
-   path('portfolio/<slug:slug>', views.PortfolioDetailView.as_view(), name="portfolio"),
+   path('portfolio/<slug:slug>', views.PortfolioDetailView.as_view(), name="portfolio_view"),
 	  
     
    path('blog/',views.blog.as_view(),name="myblog"),

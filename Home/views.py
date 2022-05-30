@@ -3,8 +3,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render, HttpResponse
 from django.urls.conf import include
 from django.contrib import messages
-from django.contrib.auth import  authenticate , get_user_model , login
-from django.contrib.auth.models import User
+from django.contrib.auth import  authenticate , get_user_model , login , logout
+from django.contrib.auth.models import User ,auth
 from Home.forms import UserResgistrationForm
 from django.views import generic
 from django.shortcuts import render 
@@ -65,13 +65,24 @@ def login_fn(request):
         if user is not None:
             login(request, user)
             print(request.user.username)
-            return redirect('Home:home_fn')
+            return redirect('Home:home')
+        
         else:
             messages.info(request, 'Invalid credentials')
             return redirect('Home:login')
     else:  
-        return render(request, 'login.html')   
+        return render(request, 'login.html')    
 
+def logout(request):
+    auth.logout(request)
+    return redirect('Home:home')
+
+def about_us(request):
+     return render(request, 'aboutus.html')  
+
+
+def contact_us(request):
+    return render(request,'cont.html')
 
 class PortfolioView(generic.DetailView):
 	model = Portfolio
