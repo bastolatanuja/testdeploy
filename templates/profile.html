@@ -1,0 +1,69 @@
+{% extends 'baseprofile.html' %}"
+{% load static %}
+
+ 
+{% block title %} profile{% endblock %}
+{% block decription %}{% endblock %}
+{% block keywords %}{% endblock %}
+ 
+{% block content %}
+ <!-- ================================
+    Start Content
+    ================================= -->
+    <section>
+      <div class="bannerSection">
+        <div class="container">
+          <div class="row g-4 g-md-3  align-items-center">
+            <div class="col-md-auto order-md-last">
+              <div class=" img-fluid ">
+                {% if user.userprofile.avatar %}
+                <img src="{{user.userprofile.avatar.url}}" alt="...">
+                {%else%}
+                <img src="{% static 'image/profile.jpg' %}" alt="...">
+                {%endif%}
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="bannerContent">
+                <h1 class="xlTitle pb-3">Hi,{{user.first_name|title}} {{user.last_name|title}}...</h1>
+                <h1 class="xlTitle pb-2"> Welcome to your profile , Here you can edit your information... </h1> 
+                 
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <br>
+      <br>
+        <div class="row">
+          <div class="col-1"></div>
+          <div class="col-2">
+            <a class="btn btn-success" href="{%url 'Home:changedp'%}">Change profile</a>
+          </div>  
+           
+           <div class="col-2">
+          <a href="{% url 'Home:editprofile' %}" class="btn btn-success ">Edit Profile</a>
+        </div>  
+         
+          <div class="col-2">
+            <a class="btn btn-danger" href="{%url 'Home:deletedp'%}">Delete profile</a>
+          </div>  
+          
+          <div class="col-2">
+            <a class="btn btn-danger" href="">Change Password</a>
+          </div>
+
+          <div class="col-2">
+            <a class="btn btn-danger" href="">Log Out</a>
+          </div>
+           
+          
+        </div>
+      </div>
+    </section>
+
+    <hr>
+    
+    
+   
+{% endblock %}   

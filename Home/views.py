@@ -6,14 +6,22 @@ from django.contrib import messages
 from django.contrib.auth import  authenticate , get_user_model , login
 from django.contrib.auth.models import User
 from Home.forms import UserResgistrationForm
+from django.views import generic
+from django.shortcuts import render 
+from .forms import   changeDpForm, editprofileForm
+from django.contrib.auth.forms import  PasswordChangeForm
+from django.contrib.auth.views import PasswordChangeView
 
 from .models import ( 
 		Portfolio,
         Blog,
+        UserProfile,
 )
 from django.views import generic
 
 User = get_user_model()
+
+
 
 def home(request):
     return render(request,'home.html')
@@ -106,3 +114,75 @@ class blog(generic.ListView):
 class BlogDetailView(generic.DetailView):
 	model = Blog
 	template_name = "Home/blog-detail.html"
+
+
+
+
+
+
+def profileView(request):
+	template_name="profile.html"
+	return render(request,"profile.html")
+ 
+class ChangeDP(generic.UpdateView):
+	form_class = changeDpForm
+	template_name = "updateImage.html"
+	success_url = "/"
+
+	def get_object(self):
+		return self.request.user
+
+class PasswordsChangeView(PasswordChangeView):
+	form_class = PasswordChangeForm
+	success_url = "/"
+
+class editprofileView(generic.UpdateView):
+	form_class = editprofileForm
+	template_name = "editprofile.html"
+	success_url = "/"
+
+	def get_object(self):
+		return self.request.user
+
+class dpChangeView(generic.UpdateView):
+	template_name = "updateImage.html"
+	form_class = changeDpForm
+	success_url = "/"
+	
+	def get_object(self):
+		return self.request.user
+
+
+def editDPView(request):
+	user = request.user
+	if request.method=='POST':
+			newImage = request.FILES['avatar']
+			obj = UserProfile.objects.get(user=user)
+			obj.avatar = newImage
+			obj.save()
+			return render(request,'profile.html')
+	else:
+		return render(request, 'updateImage.html')
+
+def SetUserImageDefault(self):
+	user = self.user
+	#self.user.userprofile.avatar.delete(save=True)
+	return render(self,"deleteUserdp.html",{'user':user})
+
+def delDp(request):
+	if request.method=='POST':
+		request.user.userprofile.avatar.delete(save=True)
+		return render(request,"profile.html")
+	else:
+		return render(request,"deleteUserdp.html")
+
+
+class allUserProfiles(generic.ListView):
+	model = UserProfile
+	template_name = "alluserprofile.html"
+ 
+class updateUserProfile(generic.UpdateView):
+	model = UserProfile
+	template_name = "editUserProfile.html"
+	fields = '__all__'
+ 

@@ -1,0 +1,45 @@
+{% extends 'baseprofile.html' %}
+{% load static %}
+
+<!-- ================================
+Start SEO blocks
+================================= -->
+{% block title %} userdp{% endblock %}
+{% block decription %}{% endblock %}
+{% block keywords %}{% endblock %}
+ 
+
+ 
+{% block content %}
+    <!-- ================================
+    Start Content
+    ================================= -->
+    <section>
+      <div class="innerPageBannerCol">
+        <div class="container">
+          <div class="row g-4 g-md-3  align-items-center">
+            <div class="col-md-6">
+              <div class="bannerContent">
+                <h1 class="xlTitle pb-md-3">Delete {{item.title}}</h1><br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="lightBg">
+        <div class="container">
+            <form method="POST" enctype="multipart/form-data" action="/delDp/">
+              {% csrf_token %}
+              <strong> Are you sure? </strong><br>
+              <button class="btn btn-secondary">Delete Picture</button><a class="btn btnOutline" href="{%url 'Home:profile'%}">Cancel</a>
+            </form>
+         </div>
+      </div>
+    </section>
+    <!-- ================================
+    End Content
+    ================================= -->
+    {%endblock%}
