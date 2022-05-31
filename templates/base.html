@@ -60,9 +60,13 @@
         <div class="fas fa-bars" id="menu-btn"></div>
         <div class="fas fa-shopping-cart" id="cart-btn"></div>
 
-        {% if not request.user.is_authenticated %}
+        {% comment %} {% if not request.user.is_authenticated %} {% endcomment %}
         <a href="{% url 'Home:login' %}"><div class="fas fa-user" id="login-btn"></div></a>
-        {% else %}
+        
+        <nav class="navbar">
+        <a href={% url 'Home:logout' %}>Signout</a>
+        </nav>
+        {% comment %} {% else %}
         <div class="profile">
             <ul>
                 <li class="nr_li dd_main" style="list-style: none;">
@@ -79,7 +83,8 @@
             </ul>
         </div>
     </div>
-    {% endif %}
+    {% endif %} {% endcomment %}
+</div>
 
 
 </header>

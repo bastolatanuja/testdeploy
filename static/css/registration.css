@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: #e2ffbc;
+    background-color: #e2ffbc ;
 }
 
 .centered-form {
@@ -15,8 +15,7 @@ body {
     margin: auto;
 
 }
-
-.container {
+.container{
     border-radius: 20px;
     width: 910px;
     margin: auto;
@@ -51,11 +50,10 @@ h1 {
     border-radius: 50px;
     font-size: x-large;
     width: 100%;
-
+    
 
 }
-
-a {
+a{
     color: rgb(12, 12, 149);
 
 }
