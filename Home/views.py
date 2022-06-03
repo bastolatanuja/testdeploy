@@ -12,6 +12,9 @@ from django.shortcuts import render
 from django.contrib.auth.forms import  PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from django.core.mail import send_mail
+from django.views import generic
+from .models import Blog
+from.models import Portfolio
 
 
 # For reset password
@@ -146,10 +149,35 @@ def contact_us(request):
 def blog(request):
     return render(request,'pages/blog.html')
 
+def portfolio(request):
+    return render(request,'pages/portfolio.html')
+
 def blog_two(request):
     return render(request,'pages/blog2.html')
+
+def portfolio_two(request):
+    return render(request,'pages/portfolio2.html')
 
 def shop(request):
     return render(request,'shop/shop.html')
 
- 
+class Blogview(generic.ListView):
+    model=Blog
+    template_name='pages/blog.html'
+    def get_queryset(self):
+        return super().get_queryset().filter(is_active=True)
+
+class Portfolioview(generic.ListView):
+    model=Portfolio
+    template_name='pages/portfolio.html'
+    def get_queryset(self):
+        return super().get_queryset().filter(is_active=True)
+
+class Blogdetailview(generic.DetailView):
+    model=Blog
+    template_name='pages/blog2.html'
+
+class Portfoliodetailview(generic.DetailView):
+    model=Portfolio
+    template_name='pages/portfolio2.html'
+    

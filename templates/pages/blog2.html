@@ -8,12 +8,12 @@
     <section class="blog2" id="blog2">
 
         <div class="image">
-            <img src= "{% static 'image/blog/virus-g05ba42a28_640.jpg' %}" alt="">
+            <img src= "{{object.image.url}}" alt="">
         </div>
     
         <div class="content">
-            <h3 class="title">Title</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos ut explicabo, numquam iusto est a ipsum assumenda tempore esse corporis?</p>
+            <h3 class="title">{{object.name}}</h3>
+            <p>{{object.body}}</p>
         </div>
     
     </section>

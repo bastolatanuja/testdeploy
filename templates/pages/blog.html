@@ -12,81 +12,22 @@
         <div class="swiper blogs-slider">
 
             <div class="swiper-wrapper">
-
+                {% for obj in object_list %}
                 <div class="swiper-slide slide">
                     <div class="image">
-                        <img src="{% static 'image/blog/blood-g2f545999a_640.jpg' %}" alt="">
+                        <img src="{{obj.image.url}}" alt="">
                     </div>
                     <div class="content">
-                        <h3>Titile</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore.</p>
-                        <a href="{% url 'Home:blog_two' %}" class="btn">Read more</a>
+                        <h3>{{obj.name}}</h3>
+                        <p>{{obj.description}}</p>
+                        <a href="{% url 'Home:blog_two' slug=obj.slug %}" class="btn">Read more</a>
                         <div class="icons">
-                            <a href="#"> <i class="fas fa-calendar"></i> 1st June, 2022 </a>
-                            <a href="#"> <i class="fas fa-user"></i> By Dr. Tanuja </a>
+                            <a href="#"> <i class="fas fa-calendar"></i>{{obj.timestamp}} </a>
+                            <a href="#"> <i class="fas fa-user"></i> By {{obj.author}} </a>
                         </div>
                     </div>
                 </div>
-
-                <div class="swiper-slide slide">
-                    <div class="image">
-                        <img src= "{% static 'image/blog/capsules-g8f3eacdd1_640.jpg' %}" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>Titile</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore.</p>
-                        <a href="{% url 'Home:blog_two' %}"class="btn">Read more</a>
-                        <div class="icons">
-                            <a href="#"> <i class="fas fa-calendar"></i> 1st June, 2022 </a>
-                            <a href="#"> <i class="fas fa-user"></i> By Dr. Kishan </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide slide">
-                    <div class="image">
-                        <img src= "{% static 'image/blog/medications-g7cb01fef2_640.jpg' %}" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>Titile</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore.</p>
-                        <a href="{% url 'Home:blog_two' %}" class="btn">Read more</a>
-                        <div class="icons">
-                            <a href="#"> <i class="fas fa-calendar"></i> 1st June, 2022 </a>
-                            <a href="#"> <i class="fas fa-user"></i> By Dr. Nitesh </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide slide">
-                    <div class="image">
-                        <img src= "{% static 'image/blog/thermometer-g2035bcd19_640.jpg' %}" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>Titile</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore.</p>
-                        <a href="{% url 'Home:blog_two' %}" class="btn">Read more</a>
-                        <div class="icons">
-                            <a href="#"> <i class="fas fa-calendar"></i> 1st June, 2022 </a>
-                            <a href="#"> <i class="fas fa-user"></i> By Dr. Ishwor </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide slide">
-                    <div class="image">
-                        <img src= "{% static 'image/blog/virus-g05ba42a28_640.jpg' %}" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>Titile</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore.</p>
-                        <a href="{% url 'Home:blog_two' %}" class="btn">Read more</a>
-                        <div class="icons">
-                            <a href="#"> <i class="fas fa-calendar"></i> 1st June, 2022 </a>
-                            <a href="#"> <i class="fas fa-user"></i> By Dr. Anup </a>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
 
             </div>
 
