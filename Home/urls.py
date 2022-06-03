@@ -1,5 +1,6 @@
 from django.urls import path
 from Home import views
+from django.contrib.auth import views as auth_views
 
 app_name = "Home"
 
@@ -11,27 +12,13 @@ urlpatterns = [
    path('aboutus/',views.about_us, name='aboutus'),
    path('contactus/',views.contact_us, name='contactus'),
    path("logout/", views.logout, name='logout'),
+   path("shop/", views.shop, name='shop'),
    
-   
-   # path('', views.PortfolioView.as_view(), name="portfolio"),
-   
-   path('portfolio/', views.PortfolioView.as_view(), name="portfolio"),
-   path('portfolio/<slug:slug>', views.PortfolioDetailView.as_view(), name="portfolio_view"),
-	  
-    
-   path('blog/',views.blog.as_view(),name="myblog"),
-   path('blog/<slug:slug>', views.BlogDetailView.as_view(), name="blog"),
-   
-   
-   path('profile/',views.profileView,name="profile"),
-   path('editprofile/',views.editprofileView.as_view(),name="editprofile"),
-	path('changedp/',views.editDPView,name="changedp"),
-	path('updateDP/',views.dpChangeView.as_view(),name="updateDP"),
-	path('deletedp/',views.SetUserImageDefault,name="deletedp"),
-	 
- 
-	path('updateUserProfile/<int:pk>',views.updateUserProfile.as_view(),name="updateUserProfile"),
- 
-	path('delDp/',views.delDp,name="delDp"),
+   path('blog/',views.blog, name="blog"),
+   path('blog_two/', views.blog_two, name="blog_two"),
+
+   path("password_reset/", views.password_reset_request, name="password_reset"),
+
+  
 ]
 

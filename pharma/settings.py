@@ -83,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'medical',
         'USER': 'postgres',
-        'PASSWORD': '123',
+        'PASSWORD': 'root7',
         'HOST': 'localhost',
     }
 }
@@ -136,3 +136,25 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "mediafiles"
+
+# Messages
+
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
+
+
+#Email setting
+# For Contact Us
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'biruwahamro@gmail.com'
+EMAIL_HOST_PASSWORD = 'iguvwjipdrzeavzk'
+# ACCOUNT_EMAIL_VERIFICATION ='none'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
