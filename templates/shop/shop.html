@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Shop {% endblock %}
+{% block content %}
+
+    <!-- products section starts  -->
+
+    <section class="products" id="products">
+
+        <h1 class="heading"> Our <span> Products </span> </h1>
+
+        <div class="filter-buttons">
+            <div class="buttons active" data-filter="all">All</div>
+            <div class="buttons" data-filter="medicines">Medicines</div>
+            <div class="buttons" data-filter="skincare">Skin Cares</div>
+            <div class="buttons" data-filter="haircare">Hair Cares</div>
+        </div>
+
+        <div class="box-container">
+            <div class="box" data-item="medicines">
+                <a href="#" class="btn2">Available</a>
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart"></a>
+                    <a href="#" class="fas fa-info-circle"></a>
+                </div>
+                <div class="image">
+                    <img src="{% static 'image/medicine/sinex.jpg' %}"  alt="">
+                </div>
+                <div class="content">
+                    <h3>Sinex</h3>
+                    <h2>Nrs. 230</h3>
+                </div>
+            </div>
+
+            <div class="box" data-item="medicines">
+                <a href="#" class="btn3">Out of Stock</a>
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart"></a>
+                    <a href="#" class="fas fa-info-circle"></a>
+                </div>
+                <div class="image">
+                    <img src="{% static 'image/medicine/calcium.jpg' %}"  alt="">
+                </div>
+                <div class="content">
+                    <h3>Calcium</h3>
+                    <h2>Nrs. 230</h3>
+                </div>
+            </div>
+
+            <div class="box" data-item="medicines">                
+                <a href="#" class="btn3">Out of Stock</a>
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart"></a>
+                    <a href="#" class="fas fa-info-circle"></a>
+                </div>
+                <div class="image">
+                    <img src="{% static 'image/medicine/vitamin d3.jpg' %}"  alt="">
+                </div>
+                <div class="content">
+                    <h3>Vitamin D3</h3>
+                    <h2>Nrs. 230</h3>
+                </div>
+            </div>
+            <div class="box" data-item="skincare">                
+                <a href="#" class="btn2">Available</a>
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart"></a>
+                    <a href="#" class="fas fa-info-circle"></a>
+                </div>
+                <div class="image">
+                    <img src="{% static 'image/skin care/c e ferulic.webp' %}" alt="">
+                </div>
+                <div class="content">
+                    <h3>C E Ferulic</h3>
+                    <h2>Nrs. 230</h3>
+                </div>
+            </div>
+            <div class="box" data-item="skincare">                
+                <a href="#" class="btn3">Out of Stock</a>
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart"></a>
+                    <a href="#" class="fas fa-info-circle"></a>
+                </div>
+                <div class="image">
+                    <img src="{% static 'image/skin care/aleavia.webp' %}" alt="">
+                </div>
+                <div class="content">
+                    <h3>Aleavia</h3>
+                    <h2>Nrs. 230</h3>
+                </div>
+            </div>
+            <div class="box" data-item="skincare">                
+                <a href="#" class="btn2">Available</a>
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart"></a>
+                    <a href="#" class="fas fa-info-circle"></a>
+                </div>
+                <div class="image">
+                    <img src="{% static 'image/skin care/purifying cleanser.jpg' %}"  alt="">
+                </div>
+                <div class="content">
+                    <h3>Purifying Cleanser</h3>
+                    <h2>Nrs. 230</h3>
+                </div>
+            </div>
+            <div class="box" data-item="haircare">
+                <a href="#" class="btn2">Available</a>
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart"></a>
+                    <a href="#" class="fas fa-info-circle"></a>
+                </div>
+                <div class="image">
+                    <img src="{% static 'image/skin care/purifying cleanser.jpg' %}" alt="">
+                </div>
+                <div class="content">
+                    <h3>Purifying Cleanse</h3>
+                    <h2>Nrs. 230</h3>
+                </div>
+            </div>
+            <div class="box" data-item="haircare">
+                <a href="#" class="btn3">Out of Stock</a>
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart"></a>
+                    <a href="#" class="fas fa-info-circle"></a>
+                </div>
+                <div class="image">
+                    <img src="{% static 'image/hair care/minoxidil-lotion-500x500.jpg' %}" alt="">
+                </div>
+                <div class="content">
+                    <h3>Minoxidil</h3>
+                    <h2>Nrs. 230</h3>
+                </div>
+            </div>
+            <div class="box" data-item="haircare">
+                <a href="#" class="btn2">Available</a>
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart"></a>
+                    <a href="#" class="fas fa-info-circle"></a>
+                </div>
+                <div class="image">
+                    <img src="{% static 'image/hair care/Noxidil-2-Topical-Solution-60ml.jpg' %}"  alt="">
+                </div>
+                <div class="content">
+                    <h3>Noxidil</h3>
+                    <h2>Nrs. 230</h3>
+                </div>
+            </div>
+            <div class="box" data-item="haircare">
+                <a href="#" class="btn3">Out of Stock</a>
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart"></a>
+                    <a href="#" class="fas fa-info-circle"></a>
+                </div>
+                <div class="image">
+                    <img src= "{% static 'image/hair care/hair-loss-medicines-keshohills-hair-care-60-tablets-500x500.jpg' %}" alt="">
+                </div>
+                <div class="content">
+                    <h3>Keshohills</h3>
+                    <h2>Nrs. 230</h3>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- products section ends -->
+
+{% endblock %}
