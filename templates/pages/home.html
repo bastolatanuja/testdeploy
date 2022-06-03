@@ -1,0 +1,369 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock %}
+{% block content %}
+{% load static %}
+
+<!-- home section starts  -->
+
+<section class="home">
+
+    <div class="content">
+        <h3>Mediserv+</h3>
+        <h1>Get your skin a little love</h1>
+        <a href="{% url 'Home:shop' %}" class="btn">Shop Now</a>
+    </div>
+
+    <div class="image">
+        <img src="{% static 'image/homemain.png' %}" alt="">
+    </div>
+
+</section>
+
+<!-- home section ends -->
+<!-- rv section starts -->
+
+<section class="rv" id="rv">
+
+    <h1 class="heading"> <span>Recently</span> Viewed </h1>
+
+    <div class="swiper rv-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide slide">
+                <a href="#" class="btn2">Available</a>
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart"></a>
+                    <a href="#" class="fas fa-info-circle"></a>
+                </div>
+                <div class="image">
+                    <img src="{% static 'image/107-4657.jpg' %}" alt="">
+                </div>
+                <div class="content">
+                    <h3>Paracetamol</h3>
+                    <h2>Nrs. 230</h3>
+                </div>
+            </div>
+
+                <div class="swiper-slide slide">
+                    <a href="#" class="btn2">Available</a>
+                    <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-info-circle"></a>
+                    </div>
+                    <div class="image">
+                        <img src="{% static 'image/misolo serum.jpg' %}" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>Misolo Serum</h3>
+                        <h2>Nrs. 230</h3>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <a href="#" class="btn2">Available</a>
+                    <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-info-circle"></a>
+                    </div>
+                    <div class="image">
+                        <img src="{% static 'image/vitamin-c-tablet-500x500.jpg' %}" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>Vitamin C</h3>
+                        <h2>Nrs. 230</h3>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <a href="#" class="btn3">Out of Stock</a>
+                    <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+
+                        <a href="#" class="fas fa-info-circle"></a>
+                    </div>
+                    <div class="image">
+                        <img src="{% static 'image/serum.jpg.crdownload' %}" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>Serum</h3>
+                        <h2>Nrs. 230</h3>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+
+        </div>
+
+    </section>
+
+    <!-- rv section starts  -->
+
+    <!-- feature section ends -->
+
+    <section class="about" id="about">
+
+        <div class="video-container" data-aos="fade-right" data-aos-delay="300">
+            <video src= "{% static 'image/The best care for your skin..mp4' %}" muted autoplay loop class="video"></video>
+        </div>
+    </section>
+    <section class="featured" id="featured">
+
+        <h1 class="heading"> <span>Our</span> Featured Products</h1>
+
+        <div class="swiper featured-slider">
+
+            <div class="swiper-wrapper">
+                <div class="swiper-slide slide">
+                    <a href="#" class="btn2">Available</a>
+                    <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-info-circle"></a>
+                    </div>
+                    <div class="image">
+                        <img src="{% static 'image/featured/2a72e96b-13a5-5af5-4adf-617e6b9701d1.jpg' %}">
+                    </div>
+                    <div class="content">
+                        <h3>Propolis</h3>
+                        <h2>Nrs. 230</h3>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <a href="#" class="btn2">Available</a>
+                    <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-info-circle"></a>
+                    </div>
+                    <div class="image">
+                        <img src= "{% static 'image/featured/download.jfif' %}" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>Mi solo</h3>
+                        <h2>Nrs. 230</h3>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <a href="#" class="btn3">Out of Stock</a>
+                    <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+
+                        <a href="#" class="fas fa-info-circle"></a>
+                    </div>
+                    <div class="image">
+                        <img src="{% static 'image/featured/w-lab cream.jpg' %}" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>W-lab Cream</h3>
+                        <h2>Nrs. 230</h3>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <a href="#" class="btn3">Out of Stock</a>
+                    <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-info-circle"></a>
+                    </div>
+                    <div class="image">
+                        <img src= "{% static 'image/featured/misolo serum.jpg' %}" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>Misolo Serum</h3>
+                        <h2>Nrs. 230</h3>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- skin section starts -->
+    <section class="medicine" id="medicine">
+
+        <h1 class="heading"> <span>Our</span> Medicine Products </h1>
+
+        <div class="swiper medicine-slider">
+
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide slide">
+                    <a href="#" class="btn2">Available</a>
+                    <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-info-circle"></a>
+                    </div>
+                    <div class="image">
+                        <img src="{% static 'image/medicine/calcium.jpg' %}" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>Calcium</h3>
+                        <h2>Nrs. 230</h3>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <a href="#" class="btn2">Available</a>
+                    <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-info-circle"></a>
+                    </div>
+                    <div class="image">
+                        <img src="{% static 'image/medicine/paracetamol-tablets-ip-500x500.jpg' %}" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>Paracetamol</h3>
+                        <h2>Nrs. 230</h3>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <a href="#" class="btn3">Out of Stock</a>
+                    <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-info-circle"></a>
+                    </div>
+                    <div class="image">
+                        <img src="{% static 'image/medicine/sinex.jpg' %}" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>Sinex</h3>
+                        <h2>Nrs. 230</h3>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <a href="#" class="btn3">Out of Stock</a>
+                    <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-info-circle"></a>
+                    </div>
+                    <div class="image">
+                        <img src= "{% static 'image/medicine/vitamin d3.jpg' %}" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>Vitamin D3</h3>
+                        <h2>Nrs. 230</h3>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+
+        </div>
+
+    </section>
+
+    <!-- medicine section ends -->
+    <!-- skin section starts -->
+    <section class="skin" id="skin">
+
+        <h1 class="heading"> <span>Our</span> Skin Products </h1>
+
+        <div class="swiper skin-slider">
+
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide slide">
+                    <a href="#" class="btn2">Available</a>
+                    <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-info-circle"></a>
+                    </div>
+                    <div class="image">
+                        <img src="{% static 'image/skin care/aleavia.webp' %}" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>Aleavia</h3>
+                        <h2>Nrs. 230</h3>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <a href="#" class="btn3">Out of Stock</a>
+                    <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-info-circle"></a>
+                    </div>
+                    <div class="image">
+                        <img src="{% static 'image/skin care/c e ferulic.webp' %}" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>C E Ferulic</h3>
+                        <h2>Nrs. 230</h3>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <a href="#" class="btn3">Out of Stock</a>
+                    <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-info-circle"></a>
+                    </div>
+                    <div class="image">
+                        <img src= "{% static 'image/skin care/eye cream.webp' %}" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>Eye Cream</h3>
+                        <h2>Nrs. 230</h3>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <a href="#" class="btn2">Available</a>
+                    <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-info-circle"></a>
+                    </div>
+                    <div class="image">
+                        <img src="{% static 'image/skin care/purifying cleanser.jpg' %}" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>Purifying Cleanser</h3>
+                        <h2>Nrs. 230</h3>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+
+        </div>
+
+    </section>
+
+    <!-- skin section ends -->
+
+
+    <!-- deAl section starts  -->
+
+    <section class="deal">
+
+        <div class="image">
+            <img src="{% static 'image/pngwing.com (4).png' %}" alt="">
+        </div>
+
+        <div class="content">
+            <span>Fleure Beauty's</span>
+            <h3>Sunkissed Collection</h3>
+            <a href="{% url 'Home:shop' %}" class="btn">Buy Here</a>
+        </div>
+
+    </section>
+
+    <!-- deal section ends -->
+
+{% endblock %}
