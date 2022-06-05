@@ -14,7 +14,6 @@
         <a href="{% url 'Home:portfolio' %}">Portfolio</a>
         <a href="{% url 'Home:aboutus' %}">About Us</a>
         <a href="{% url 'Home:contactus' %}">Contact Us</a>
-        <a href="{% url 'Home:logout' %}"> Log Out</a>
 
         {% else %}
 
@@ -29,9 +28,24 @@
     <div class="icons">
         <div id="menu-btn" class="fas fa-bars"></div>
         <div id="search-btn" class="fas fa-search"></div>
-
         <a href= "{% url 'Home:shop' %}" class="fas fa-shopping-cart"></a>
+        {% if user.is_authenticated %}
+        <div id="user-btn" class="fas fa-user"></div>
+        {% else %}
         <a href= "{% url 'Home:login' %}" class="fas fa-user"></a>
+        {% endif %}
+    </div>
+    
+    <div class="user-box">
+        <p>Username : {{ request.user.first_name}} <span>
+
+            </span></p>
+        <p>Email : {{ request.user.email}}<span>
+
+            </span></p>
+        <a href="#" class="option-btn">Edit Profile</a>
+        <a href="{% url 'Home:logout' %}" class="delete-btn">Logout</a>
+
     </div>
 
 
