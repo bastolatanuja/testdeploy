@@ -1,0 +1,36 @@
+ 
+{% load static %}
+ 
+{% block content %}
+
+<title> Mediserv+ | {% block title %} Editprofile{% endblock %} </title>
+    <link rel="stylesheet" href="{% static 'css/editprofile.css' %}">
+
+     
+    <section class="editprofile">
+
+        <h1 class="heading"> Edit <span>Profile</span> </h1>
+         
+     
+        <div class="row">
+     
+           
+            <form method="POST" >
+            {% csrf_token %}
+               
+              <input type="text" placeholder="First Name" name="Fname" class="box" required>
+              <input type="text" placeholder="Last Name" name="Lname" class="box" required>
+              <input type="email" placeholder="Email" name="email" class="box" required>
+              <input type="text" placeholder="phone" name="number" class="box" required>
+               
+               
+              <input type="submit" value="Update" class="btn">
+            </form>
+     
+        </div>
+     
+     </section>
+
+ 
+
+{% endblock %}

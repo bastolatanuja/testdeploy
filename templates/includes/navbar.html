@@ -43,7 +43,7 @@
         <p>Email : {{ request.user.email}}<span>
 
             </span></p>
-        <a href="#" class="option-btn">Edit Profile</a>
+        <a href="{% url 'Home:editprofile' %}" class="option-btn">Edit Profile</a>
         <a href="{% url 'Home:logout' %}" class="delete-btn">Logout</a>
 
     </div>

@@ -149,6 +149,9 @@ def contact_us(request):
 def blog(request):
     return render(request,'pages/blog.html')
 
+def editprofile(request):
+    return render(request,'includes/editprofile.html')
+
 def portfolio(request):
     return render(request,'pages/portfolio.html')
 
