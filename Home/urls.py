@@ -6,7 +6,6 @@ app_name = "Home"
 
 urlpatterns = [
    path('',views.home, name='home'),
-   path('editprofile/',views.editprofile, name='editprofile'),
    path("register/",views.register, name='register'),
    path('login/', views.login_fn, name='login'),
    path('home_fn/',views.home_fn, name='home_fn'),
@@ -23,6 +22,7 @@ urlpatterns = [
    path("password_reset/", views.password_reset_request, name="password_reset"),
 
   path("dash/", views.dash, name='dash'),
-  path('resetpassword/', views.resetpassword, name='resetpassword')
+  path('resetpassword/', views.resetpassword, name='resetpassword'),
+  path('editprofile/', views.edit_profile ,name='editprofile'),
 ]
 

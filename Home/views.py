@@ -9,12 +9,12 @@ from django.contrib.auth.models import User ,auth
 from Home.forms import UserResgistrationForm
 from django.views import generic
 from django.shortcuts import render 
-from django.contrib.auth.forms import  PasswordChangeForm
-from django.contrib.auth.views import PasswordChangeView
 from django.core.mail import send_mail
 from django.views import generic
 from .models import Blog
 from.models import Portfolio
+from Home.forms import UserResgistrationForm
+from . import forms
 
 
 # For reset password
@@ -149,9 +149,6 @@ def contact_us(request):
 def blog(request):
     return render(request,'pages/blog.html')
 
-def editprofile(request):
-    return render(request,'pages/editprofile.html')
-
 def portfolio(request):
     return render(request,'pages/portfolio.html')
 
@@ -188,4 +185,35 @@ def dash(request):
     return render(request,'pages/dash.html') 
 
 def resetpassword(request):
-    return render(request,'pages/resetpassword.html')      
+    return render(request,'pages/resetpassword.html')     
+
+# def edit_profile(request):
+#     user = User.objects.get(id=request.user.id)
+#     userForm = UserResgistrationForm(instance=user)
+#     mydict = {
+#         'userForm': userForm,
+#         'user': user
+#     }
+#     if request.method == 'POST':
+#         userForm = UserResgistrationForm(request.POST, request.FILES, instance=user)
+#         if userForm.is_valid():
+#             userForm.save()
+#             messages.success(request, "Account Sucessfully Updated")
+#             return HttpResponseRedirect('Home:dash')
+
+#     return render(request, 'pages/editprofile.html', context=mydict) 
+
+def edit_profile(request):
+    user=User.objects.get(id=request.user.id)
+    userForm=UserResgistrationForm(instance=user)
+    mydict={
+        'userForm':userForm,
+        'user':user
+    }
+    if request.method=='POST':
+        userForm=UserResgistrationForm(request.POST, request.FILES, instance=user)
+        if userForm.is_valid():
+            userForm.save()
+            messages.success(request, "Account Sucessfully Updated")
+            return HttpResponseRedirect('Home:dash')
+    return render(request,'pages/editprofile.html',context=mydict)

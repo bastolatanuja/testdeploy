@@ -83,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'medical',
         'USER': 'postgres',
-        'PASSWORD': '123',
+        'PASSWORD': 'root7',
         'HOST': 'localhost',
     }
 }
@@ -158,3 +158,4 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

@@ -60,19 +60,19 @@
 </section>
  
 <br><br>
-<a href="{% url 'Home:resetpassword' %}" class="btn">Reset Password</a>  <a href="#" class="btndanger">Delete Account</a>
+<a href="{% url 'Home:resetpassword' %}" class="btn">Change Password</a>  <a href="#" class="btndanger">Delete Account</a>
  
 </td>
 <td>
 <ul>
-<li><b>Full name : </b> <input type="text" name="fname" id="fname" maxlength="100" value="Bharadwaj" required />  
-    
-<li><b>Username : </b> <input type="text" name="username"  maxlength="100" value=" {{ request.user.first_name}}" required />     
+<li><b>First name : </b> <input type="text" name="first_name" id="first_name" maxlength="100" value=" {{ request.user.first_name}}" required />  
+
+<li><b>Last name : </b> <input type="text" name="last_name" id="last_name" maxlength="100" value=" {{ request.user.last_name}}" required />  
+
+<li><b>Username : </b> <input type="text" name="username"  maxlength="100" value=" {{ request.user.username}}" required />     
 
 <li><b>Email : </b> <input type="email" name="email" id="email" maxlength="150" value=" {{ request.user.email}}" required /></li>
-
-<li><b>Contact number : </b> <input type="tel" name="mobile" id="mobile" maxlength="10" value="0123456789" required />  
-
+ 
  
 </ul>
 <a href="{% url 'Home:editprofile' %}" class="btn">Edit Profile</a>
