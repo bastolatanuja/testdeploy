@@ -1,74 +1,86 @@
-.editprofile {
-    margin-top: 8rem;
-    background-color: #99dfec;;
-  }
+body{
+  margin: 0;
+  padding: 0;
+ 
+  background-image: linear-gradient(180deg,  rgb(224, 224, 144), rgb(210, 128, 128));
+  background-position: center;
+  font-family: sans-serif;
+}
+.login-box{
+  width: 500px;
+  height: 480px;
+  background: #51b6b6;
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  box-sizing: border-box;
+  padding: 70px 30px;
+  border-radius: 10px;
+}
+.avatar{
+  width: 130px;
+  height: 120px;
+  border-radius: 50%;
+  position: absolute;
+  top: -50px;
+  left: calc(50% - 50px);
+}
+h1{
+  margin: 0;
+  padding: 0 0 20px;
+  text-align: center;
+  font-size: 22px;
+  color:#000;
+}
+.login-box p{
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+.login-box input{
+  width: 100%;
+  margin-bottom: 20px;
+}
+.login-box input[type="text"], input[type="password"],  input[type="email"],  input[type="tel"]
+{
+  border: none;
+  border-bottom: 1px solid rgb(244, 246, 246);
+  background: transparent;
+  outline: none;
+  height: 40px;
+  color: rgb(14, 13, 13);
+  font-size: 16px;
+}
+.login-box input[type="submit"]
+{
+  border: none;
+  outline: none;
+  height: 40px;
+  background: #1c8adb;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 20px;
+}
+.login-box input[type="submit"]:hover
+{
+  cursor: pointer;
+  background: #39dc79;
+  color: #000;
+}
 
+.login-box a{
+  text-decoration: none;
+  font-size: 14px;
+  color: #fff;
+}
+.login-box a:hover
+{
+  color: #39dc79;
+}
 
-  .editprofile .row {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    gap: 2rem;
-  }
-
-
-  .editprofile.row form {
-    -webkit-box-flex: 1;
-        -ms-flex: 1 1 40rem;
-            flex: 1 1 40rem;
-    border: 0.1rem solid #04adb3;
-    padding: 2rem;
-  }
-  
-  .editprofile .row form h3 {
-    font-size: 2.5rem;
-    text-transform: capitalize;
-    color: rgb(0, 0, 0);
-    padding-bottom: 1rem;
-    text-align: center;
-  }
-  
-  .editprofile .row form .box {
-    width: 100%;
-    padding: 1.2rem 1.4rem;
-    border: 0.1rem solid #027981;
-    font-size: 1.6rem;
-    margin: .7rem 0;
-  }
-  
-  .editprofile .row form .box:focus {
-    background: #04adb3;
-    color: #fff;
-  }
-  
-  .editprofile .row form .box:focus::-webkit-input-placeholder {
-    color: #eee;
-  }
-  
-  .editprofile .row form .box:focus:-ms-input-placeholder {
-    color: #eee;
-  }
-  
-  .editprofile .row form .box:focus::-ms-input-placeholder {
-    color: #eee;
-  }
-  
-  .editprofile .row form .box:focus::placeholder {
-    color: #eee;
-  }
-  
-  .editprofile .row form textarea {
-    height: 15rem;
-    resize: none;
-  }  
-
-
-  .heading {
+.heading {
     font-size: 3.5rem;
     color: #130f40;
     padding-bottom: 0rem;
@@ -81,17 +93,4 @@
     color: #eb4d4b;
 }
 
-.btn {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: .9rem 3rem;
-    border-radius: .5rem;
-    background: #51b6b6;
-    color: #fff;
-    font-size: 1.7rem;
-    cursor: pointer;
-}
-
-.btn:hover {
-    background: #130f40;
-}
+ 

@@ -150,7 +150,7 @@ def blog(request):
     return render(request,'pages/blog.html')
 
 def editprofile(request):
-    return render(request,'includes/editprofile.html')
+    return render(request,'pages/editprofile.html')
 
 def portfolio(request):
     return render(request,'pages/portfolio.html')
@@ -184,3 +184,8 @@ class Portfoliodetailview(generic.DetailView):
     model=Portfolio
     template_name='pages/portfolio2.html'
     
+def dash(request):
+    return render(request,'pages/dash.html') 
+
+def resetpassword(request):
+    return render(request,'pages/resetpassword.html')      

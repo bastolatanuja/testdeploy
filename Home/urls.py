@@ -22,6 +22,7 @@ urlpatterns = [
 
    path("password_reset/", views.password_reset_request, name="password_reset"),
 
-  
+  path("dash/", views.dash, name='dash'),
+  path('resetpassword/', views.resetpassword, name='resetpassword')
 ]
 
