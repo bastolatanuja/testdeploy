@@ -13,6 +13,9 @@ urlpatterns = [
    path('contactus/',views.contact_us, name='contactus'),
    path("logout/", views.logout, name='logout'),
    path("shop/", views.shop, name='shop'),
+    path("helpsection/", views.helpsection, name='helpsection'),
+
+   
    
    path('blog/',views.Blogview.as_view(), name="blog"),
    path('blog_two/<slug:slug>', views.Blogdetailview.as_view(), name="blog_two"),

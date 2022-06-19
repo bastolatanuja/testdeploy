@@ -158,6 +158,9 @@ def blog_two(request):
 def portfolio_two(request):
     return render(request,'pages/portfolio2.html')
 
+def helpsection(request):
+    return render(request,'pages/helpsection.html')
+
 def shop(request):
     return render(request,'shop/shop.html')
 
