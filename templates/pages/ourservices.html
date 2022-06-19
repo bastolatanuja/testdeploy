@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Our Services {% endblock %}
+{% block content %}
+
+    <!-- our services  section starts  -->
+
+    <section class="services">
+
+        <div class="content">
+            <h3>Ambulance</h3>
+            <h1>Get Ambulance Details</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde perspiciatis in atque dolore tempora quaerat at fuga dolorum natus velit.</p>
+            <a href="{% url 'Home:ambulance' %}" class="btn">Find Ambulance</a>
+        </div>
+
+        <div class="image">
+            <img src= "{% static 'image/a.png' %}">
+        </div>
+
+    </section>
+    <section class="services2">
+
+        <div class="image">
+            <img src="{% static 'image/b.png' %}">
+        </div>
+        <div class="content">
+            <h3>Doctor</h3>
+            <h1>Get Your Doctor Details</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde perspiciatis in atque dolore tempora quaerat at fuga dolorum natus velit.</p>
+            <a href= "{% url 'Home:doctors' %}" class="btn">Find Doctor</a>
+        </div>
+
+    </section>
+
+
+    <!-- our services section ends -->
+
+{% endblock %}

@@ -12,9 +12,10 @@ from django.shortcuts import render
 from django.core.mail import send_mail
 from django.views import generic
 from .models import Blog
-from.models import Portfolio
+from.models import Portfolio, Product
 from Home.forms import UserResgistrationForm
 from . import forms
+from . import models
 
 
 # For reset password
@@ -33,10 +34,13 @@ User = get_user_model()
 
 
 def home(request):
-    return render(request,'pages/home.html')
-
-def home_fn(request):
-    return render(request,'pages/afterlogin.html')
+    recently_viewed = models.Product.objects.filter(recently_viewed=True)
+    products=models.Product.objects.all()
+    data = {
+        'products':products,
+        'recently_viewed': recently_viewed,
+    }
+    return render(request, 'pages/home.html', data)
 
 
 def register(request):
@@ -158,11 +162,20 @@ def blog_two(request):
 def portfolio_two(request):
     return render(request,'pages/portfolio2.html')
 
-def helpsection(request):
-    return render(request,'pages/helpsection.html')
-
 def shop(request):
     return render(request,'shop/shop.html')
+
+def services(request):
+    return render(request,'pages/ourservices.html')
+
+def ambulance(request):
+    return render(request,'pages/ambulance.html')
+
+def doctors(request):
+    return render(request,'pages/doctors.html')
+
+def helpsection(request):
+    return render(request,'pages/helpsection.html')
 
 class Blogview(generic.ListView):
     model=Blog
@@ -189,22 +202,6 @@ def dash(request):
 
 def resetpassword(request):
     return render(request,'pages/resetpassword.html')     
-
-# def edit_profile(request):
-#     user = User.objects.get(id=request.user.id)
-#     userForm = UserResgistrationForm(instance=user)
-#     mydict = {
-#         'userForm': userForm,
-#         'user': user
-#     }
-#     if request.method == 'POST':
-#         userForm = UserResgistrationForm(request.POST, request.FILES, instance=user)
-#         if userForm.is_valid():
-#             userForm.save()
-#             messages.success(request, "Account Sucessfully Updated")
-#             return HttpResponseRedirect('Home:dash')
-
-#     return render(request, 'pages/editprofile.html', context=mydict) 
 
 def edit_profile(request):
     user=User.objects.get(id=request.user.id)

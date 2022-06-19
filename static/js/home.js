@@ -207,8 +207,10 @@ var swiper = new Swiper(".team-slider", {
   },
 });
 
-let userbox = document.querySelector('.user-box');
-document.querySelector('#user-btn').onclick = () =>{
-  userbox.classList.toggle('active');
-  navbar.classList.remove('active');
-}
+// document.querySelector('.load-more .btn').onclick = () =>{
+//   document.querySelectorAll('.doctors .box-container .hide').forEach(show =>{
+//     show.style.display = 'block';
+//   });
+//   document.querySelector('.load-more .btn').style.display = 'none';
+// };
+

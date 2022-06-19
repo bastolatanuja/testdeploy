@@ -2,6 +2,21 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 
+class Product(models.Model):
+    available_choice = (
+        ('In Stock', 'In Stock'),
+        ('Out Of Stock', 'Out Of Stock'),
+    )
+    name = models.CharField(max_length=40)
+    product_image = models.ImageField(upload_to='product_image/', null=True, blank=True)      
+    category=models.CharField(max_length=40)
+    price = models.PositiveIntegerField()
+    available = models.CharField(choices=available_choice, max_length=40)
+    description=models.CharField(max_length=40)
+    recently_viewed = models.BooleanField(default=False)
+    def __str__(self):
+        return self.name
+
 class Blog(models.Model):
 
     class Meta:
