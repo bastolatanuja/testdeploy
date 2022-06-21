@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Cart {% endblock %}
+{% block content %}
+
+    <!-- header section ends -->
+    <!-- cart section starts -->
+    <section class="shopping-cart">
+
+        <h1 class="title"> Your Products </h1>
+    
+        <div class="box-container">
+            {% for p in cart_items %}
+    
+            <div class="box">
+                <i class="fas fa-times"></i>
+                <img src="{{ p.product.product_image.url }}"  alt="">
+                <div class="content">
+                    <h3>{{ p.product.name }}</h3>
+                    <form action="">
+                        <span>Quantity :</span>
+                        <input type="number" name="" value="1" id="">
+                        <button type="submit" class="fas fa-edit"></button>
+                    </form>
+                    <div class="price"> {{ p.product.price }}</div>
+                </div>
+            </div> 
+            {% endfor %}
+             
+        </div>
+              
+        <h1 class="title">Checkout Cart</h1>
+    
+        <div class="cart-total">
+            <h3>Subtotal : <span>Nrs. 5000</span></h3>
+            <h3>Ttal : <span>Nrs. 5000</span></h3>
+            <a href="#" class="btn">Proceed To Checkout</a>
+        </div>
+    
+    </section>
+    <!-- cart section ends -->
+
+{% endblock %}

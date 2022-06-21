@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Prescription {% endblock %}
+{% block content %}
+    <!-- header section ends -->
+
+
+    <!-- contact section starts  -->
+
+    <section class="contact">
+
+        <h1 class="heading"> Prescription <span>Form</span> </h1>
+
+        <div class="row">
+
+
+
+            <form action="">
+                <h3>Prescription Form</h3>
+                <input type="text" placeholder="First Name" class="box">
+                <input type="text" placeholder="Last Name" class="box">
+                <input type="email" placeholder="Email" class="box">
+                <input type="number" placeholder="Phone" class="box">
+                <input type="file" placeholder="Phone" class="box">
+                <input type="submit" value="Send" class="btn">
+            </form>
+
+            <div class="image">
+                <img src="img/pres.png" alt="">
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- contact section ends -->
+
+{% endblock %}

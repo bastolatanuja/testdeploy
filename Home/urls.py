@@ -16,6 +16,8 @@ urlpatterns = [
   path("ambulance/", views.ambulance, name='ambulance'),
   path("doctors/", views.doctors, name='doctors'),
   path("helpsection/", views.helpsection, name='helpsection'),
+  path("cart/", views.cart, name='cart'),
+  path("prescription/", views.prescription, name='prescription'),
 
    
   path('blog/',views.Blogview.as_view(), name="blog"),
@@ -28,5 +30,11 @@ urlpatterns = [
   path("dash/", views.dash, name='dash'),
   path('resetpassword/', views.resetpassword, name='resetpassword'),
   path('editprofile/', views.edit_profile ,name='editprofile'),
+
+
+  path('cart', views.cart, name='cart'),
+  path('addcart/<int:product_id>/', views.addcart, name="addcart"),
+
+
 ]
 

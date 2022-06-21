@@ -16,6 +16,7 @@ from.models import Portfolio, Product
 from Home.forms import UserResgistrationForm
 from . import forms
 from . import models
+from .models import Cart, CartItem
 
 
 # For reset password
@@ -177,6 +178,10 @@ def doctors(request):
 def helpsection(request):
     return render(request,'pages/helpsection.html')
 
+
+def prescription(request):
+    return render(request,'pages/prescription.html')
+
 class Blogview(generic.ListView):
     model=Blog
     template_name='pages/blog.html'
@@ -217,3 +222,54 @@ def edit_profile(request):
             messages.success(request, "Account Sucessfully Updated")
             return HttpResponseRedirect('Home:dash')
     return render(request,'pages/editprofile.html',context=mydict)
+
+def _cart_id(request):
+    cart_id = request.session.session_key
+    if not cart_id:
+        cart_id = request.session.create()
+    return cart_id
+
+def addcart(request, product_id):
+    current_user = request.user
+    product = Product.objects.get(id=product_id)
+
+    if request.method == "POST":
+
+        product = Product.objects.get(id=product_id)
+        try:
+            cart = Cart.objects.get(cart_id=_cart_id(request))
+        except Cart.DoesNotExist:
+            cart = Cart.objects.create(cart_id=_cart_id(request))
+        cart.save()
+
+        is_cart_item_exists = CartItem.objects.filter(product=product, cart=cart).exists()
+        if is_cart_item_exists:
+            messages.success(request, "Item Already In Cart")
+            return redirect('Home:cart')
+        else:
+            cart_item = CartItem.objects.create(
+                product=product,
+                cart=cart,
+                user=current_user,
+            )
+            cart_item.save()
+            messages.success(request, "Item Added In Cart")
+
+        return redirect('Home:cart')
+    
+def cart(request, cart_items=None):
+    try:
+        if request.user.is_authenticated:
+            cart_items = CartItem.objects.all().filter(user=request.user)
+        else:
+            cart = Cart.objects.get(cart_id=_cart_id(request))
+            cart_items = CartItem.objects.all().filter(cart=cart, is_active=True)
+    except:
+        # print("except")
+        pass
+
+    context = {
+        "cart_items": cart_items,
+    }
+
+    return render(request, 'pages/cart.html', context)
