@@ -1,6 +1,8 @@
+from statistics import mode
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
+from datetime import datetime
 
 class Product(models.Model):
     available_choice = (
@@ -9,11 +11,16 @@ class Product(models.Model):
     )
     name = models.CharField(max_length=40)
     product_image = models.ImageField(upload_to='product_image/', null=True, blank=True)      
-    category=models.CharField(max_length=40)
+    # category=models.CharField(max_length=40)
     price = models.PositiveIntegerField()
     available = models.CharField(choices=available_choice, max_length=40)
     description=models.CharField(max_length=40)
-    recently_viewed = models.BooleanField(default=False)
+    is_recently_viewed = models.BooleanField(default=False)
+    is_featured = models.BooleanField(default=False)
+    is_medicine = models.BooleanField(default=False)
+    is_skin = models.BooleanField(default=False)
+    created_date = models.DateTimeField(default=datetime.now, blank=True)
+
     def __str__(self):
         return self.name
 
