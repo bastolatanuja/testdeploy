@@ -35,10 +35,10 @@ User = get_user_model()
 
 
 def home(request):
-    recently_viewed = models.Product.objects.filter(is_recently_viewed=True)
-    featured = models.Product.objects.filter(is_featured=True)
-    medicine = models.Product.objects.filter(is_medicine=True)
-    skin = models.Product.objects.filter(is_skin=True)
+    recently_viewed = models.Product.objects.filter(recently_viewed=True)
+    featured = models.Product.objects.filter(featured=True)
+    medicine = models.Product.objects.filter(medicine=True)
+    skin = models.Product.objects.filter(skin=True)
     products=models.Product.objects.all()
     data = {
         'products':products,
