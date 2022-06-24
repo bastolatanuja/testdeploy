@@ -214,3 +214,8 @@ var swiper = new Swiper(".team-slider", {
 //   document.querySelector('.load-more .btn').style.display = 'none';
 // };
 
+let userbox = document.querySelector('.user-box');
+document.querySelector('#user-btn').onclick = () =>{
+  userbox.classList.toggle('active');
+  navbar.classList.remove('active');
+}

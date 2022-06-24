@@ -15,10 +15,10 @@ class Product(models.Model):
     price = models.PositiveIntegerField()
     available = models.CharField(choices=available_choice, max_length=40)
     description=models.CharField(max_length=40)
-    is_recently_viewed = models.BooleanField(default=False)
-    is_featured = models.BooleanField(default=False)
-    is_medicine = models.BooleanField(default=False)
-    is_skin = models.BooleanField(default=False)
+    recently_viewed = models.BooleanField(default=False)
+    featured = models.BooleanField(default=False)
+    medicine = models.BooleanField(default=False)
+    skin = models.BooleanField(default=False)
     created_date = models.DateTimeField(default=datetime.now, blank=True)
 
     def __str__(self):
