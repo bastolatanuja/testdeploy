@@ -1,43 +1,155 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block title %} Cart {% endblock %}
+ 
+  {% load static %}
+ 
 {% block content %}
-
-    <!-- header section ends -->
-    <!-- cart section starts -->
-    <section class="shopping-cart">
-
-        <h1 class="title"> Your Products </h1>
-    
-        <div class="box-container">
-            {% for p in cart_items %}
-    
-            <div class="box">
-                <i class="fas fa-times"></i>
-                <img src="{{ p.product.product_image.url }}"  alt="">
-                <div class="content">
-                    <h3>{{ p.product.name }}</h3>
-                    <form action="">
-                        <span>Quantity :</span>
-                        <input type="number" name="" value="1" id="">
-                        <button type="submit" class="fas fa-edit"></button>
-                    </form>
-                    <div class="price"> {{ p.product.price }}</div>
-                </div>
-            </div> 
-            {% endfor %}
-             
-        </div>
+ 
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+<div class="container flex">
+    <div class="structure">
+      <a href="{% url 'Home:home' %}" class="btncont"><b>Continue Shooping</b></a>
+      <h1>Shopping cart</h1>
+  
+      <table id="table">
+        <thead>
+          <tr>
+            <th>Image</th>
+         
+            <th>Product name</th>
+            <th>Unit price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        {% for p in cart_items %}
+        <tbody id="all_products">
+          <tr>
+            <td>
               
-        <h1 class="title">Checkout Cart</h1>
+            <img src="{{ p.product.product_image.url }}" style="width:17%"  alt="">
+            </td>
+            <td>{{ p.product.name }}</td>
+            <td>{{ p.product.price }}</td>
+            <td class="quantity"><input type="number" placeholder="Unit price" min="0" value="2" contenteditable></td>
+            <td class="subtotal">  0</td>
+            <td class="remove"><button type="button">Remove</button></td>
+          </tr>
+           
+        </tbody>
+        {% endfor %}
+           
+      </table>
+      <h2>Total : <span id="total_display">0 </span></h2>
+      <a href=" " class="btndanger">Checkout</a>
+      
+    </div>
     
-        <div class="cart-total">
-            <h3>Subtotal : <span>Nrs. 5000</span></h3>
-            <h3>Ttal : <span>Nrs. 5000</span></h3>
-            <a href="#" class="btn">Proceed To Checkout</a>
-        </div>
-    
-    </section>
-    <!-- cart section ends -->
+  </div>
 
-{% endblock %}
+<style>
+    
+    .btndanger {
+        display: inline-block;
+        margin-top: 1rem;
+        padding: .9rem 1rem;
+        border-radius: .5rem;
+        background: #51b6b6;
+        color: black;
+        font-size: 1.4rem;
+        cursor: pointer;
+        text-decoration:none;
+    }
+
+    .btncont {
+      display: inline-block;
+      margin-top: 0rem;
+      
+      border-radius: .5rem;
+       {% comment %} background: #51b6b6;   {% endcomment %}
+      color: red;
+      font-size: 1.4rem;
+      cursor: pointer;
+      text-decoration:none;
+  }
+</style>
+<script>
+     
+document.querySelectorAll(".remove").forEach(removebtn => removebtn.addEventListener("click", removeProduct));
+document.querySelectorAll(".quantity").forEach(qty => qty.addEventListener("change", changeSubtotal));
+total();
+
+// Check if input is empty
+function checkInput(){
+  let nameProduct = document.getElementById("name_product");
+  let priceProduct = document.getElementById("price_product");
+  if (nameProduct.value != "" && priceProduct.value != "") {
+    addProduct();
+    total();
+  }
+}
+
+// Add a product
+function addProduct(){
+  let nameProduct = document.getElementById("name_product");
+  let priceProduct = document.getElementById("price_product");
+
+  let tbody = document.getElementById("all_products");
+  let tr = tbody.insertRow();
+  let td1 = tr.insertCell(0);
+  let td2 = tr.insertCell(1);
+  let td3 = tr.insertCell(2);
+  let td4 = tr.insertCell(3);
+  let td5 = tr.insertCell(4);
+  let td6 = tr.insertCell(5);
+
+  td1.innerHTML = imageProduct.value;
+  td2.innerHTML = nameProduct.value;
+  td3.innerHTML = priceProduct.value;
+  td4.innerHTML = '<input type="number" class="quantity" value="1" min="0">';
+  td5.innerHTML = priceProduct.value;
+  td6.innerHTML = '<button type="button" class="remove">Remove</i></button>';
+
+  td4.addEventListener("change", changeSubtotal);
+  td6.addEventListener("click", removeProduct);
+
+  nameProduct.value = "";
+  priceProduct.value = "";
+}
+
+// Change subtotal
+function changeSubtotal(element) {
+  let price = this.previousElementSibling.innerHTML;
+  let quantity = element.target.value; 
+  let subtotal = parseFloat(price * quantity).toFixed(2);
+  this.nextElementSibling.innerHTML = subtotal;
+  total();
+}
+
+// Remove a product
+function removeProduct() {
+  this.parentElement.parentElement.removeChild(this.parentElement);
+  total();
+}
+
+// Sum total
+function total(){
+  let totalDisplay = document.getElementById("total_display");
+  let sum = 0;
+  let td = document.getElementById("table").getElementsByTagName("td");
+
+  for (let i = 0; i < td.length; i++) {
+    if(td[i].className == "subtotal"){
+    sum += isNaN(td[i].innerHTML) ? 0:parseFloat(td[i].innerHTML);
+
+    }
+     
+  }
+  let total = sum.toFixed(2);
+  totalDisplay.innerHTML = " Nrs. " + total;
+ 
+}
+</script>
+{% endblock %}  
+
+
+ 
