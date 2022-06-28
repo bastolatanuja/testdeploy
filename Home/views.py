@@ -279,16 +279,15 @@ def cart(request, cart_items=None):
 
     return render(request, 'pages/cart.html', context)
 
-def search(request):
-    query=request.GET['query']
-    if len(query)>78:
-        allPosts=Product.objects.none()
-    else:
-        allPostsTitle= Product.objects.filter(title__icontains=query)
-        allPostsAuthor= Product.objects.filter(author__icontains=query)
-        allPostsContent =Product.objects.filter(content__icontains=query)
-        allPosts=  allPostsTitle.union(allPostsContent, allPostsAuthor)
-    if allPosts.count()==0:
-        messages.warning(request, "No search results found. Please refine your query.")
-    params={'allProducts': allPosts, 'query': query}
-    return render(request, 'home/search.html', params)
+
+def SearchView(request):
+    query = request.GET['query']
+    products = Product.objects.filter(name__icontains =query)
+    context ={ 'products':products}
+    return render(request,'pages/search.html',context)    
+
+def searchresult(request):
+    query = request.GET['query']
+    products = Product.objects.filter(name__icontains =query)
+    context ={ 'products':products}
+    return render(request,'pages/search.html',context)  

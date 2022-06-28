@@ -2,9 +2,9 @@
 <!-- header section starts  -->
 
 
-<header class="header">
+<header class="header pl-5 pr-5">
 
-    <a href="{% url 'Home:home' %}" class="logo"> Mediserv+</a>
+    <a href="{% url 'Home:home' %} " class="logo"> Mediserv+</a>
 
     <nav class="navbar">
         {% if user.is_authenticated %}
@@ -16,6 +16,10 @@
         <a href="{% url 'Home:aboutus' %}">About Us</a>
         <a href="{% url 'Home:helpsection' %}">Help </a>
         <a href="{% url 'Home:contactus' %}">Contact Us</a>
+        <form class="form-inline" width="30px" action="/searchresult" method="GET">
+            <input name="query" width="30px" id="query" class="form-control" type="search" placeholder="Search" aria-label="Search" required>
+            <button class="btn btn-light my-2 my-sm-0" type="submit"><div id="search-btn" class="fas fa-search"></div></button>
+        </form>
 
         {% else %}
 
@@ -25,17 +29,18 @@
         <a href="{% url 'Home:ourservices' %}">Our Services</a>
         <a href="{% url 'Home:aboutus' %}">About Us</a>
         <a href="{% url 'Home:helpsection' %}">Help </a>
-
+        
         {% endif %}
     </nav>
     
 
     <div class="icons">
         <div id="menu-btn" class="fas fa-bars"></div>
-        <div id="search-btn" class="fas fa-search"></div>
+         
         {% if user.is_authenticated %}
         <a href= "{% url 'Home:cart' %}" class="fas fa-shopping-cart"></a>
         <div id="user-btn" class="fas fa-user"></div>
+      
         {% else %}
         <a href= "{% url 'Home:login' %}" class="fas fa-user"></a>
         {% endif %}
@@ -50,13 +55,10 @@
             </span></p>
         <a href="{% url 'Home:dash' %}" class="option-btn">Dashboard</a>
         <a href="{% url 'Home:logout' %}" class="delete-btn">Logout</a>
-
+        
     </div>
 
 
-    <form action="" class="search-form">
-        <input type="search" name="" placeholder="search here..." id="search-box">
-        <label for="search-box" class="fas fa-search"></label>
-    </form>
+ =
 
 </header>
