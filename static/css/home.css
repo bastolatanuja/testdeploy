@@ -826,6 +826,19 @@ section {
     cursor: pointer;
     margin-top: 1.3rem;
 }
+
+.btnshop{
+    display: inline-block;
+    padding: .9rem 1rem;
+    border-radius: .5rem;
+    background: #03994e;
+    color: #fff;
+    margin-top:1rem;
+    font-size: 1.7rem;
+    cursor: pointer;
+    margin-left:61px;
+
+}
 .header .user-box {
     position: absolute;
     top: 120%;

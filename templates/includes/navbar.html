@@ -16,9 +16,9 @@
         <a href="{% url 'Home:aboutus' %}">About Us</a>
         <a href="{% url 'Home:helpsection' %}">Help </a>
         <a href="{% url 'Home:contactus' %}">Contact Us</a>
-        <form class="form-inline" width="30px" action="/searchresult" method="GET">
-            <input name="query" width="30px" id="query" class="form-control" type="search" placeholder="Search" aria-label="Search" required>
-            <button class="btn btn-light my-2 my-sm-0" type="submit"><div id="search-btn" class="fas fa-search"></div></button>
+        <form class="form-inline" width="50px" action="/searchresult" method="GET">
+            <input name="query" width="50px" id="query" class="form-control" type="search" placeholder="Search" aria-label="Search" required>
+            <button class="btn btn-light my-5 my-sm-0" type="submit"><div id="search-btn" class="fas fa-search"></div></button>
         </form>
 
         {% else %}
