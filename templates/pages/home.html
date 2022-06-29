@@ -50,12 +50,37 @@
             {% csrf_token %}
             <div class="swiper-slide slide">
                 <a href="#" class="btn2">{{ p.available }}</a>
+                {% if p.available == 'In Stock' %}
                 <div class="icons">
-                    <button type="submit" class="btn-cart"> Add to Cart
+                    <button type="submit" style="
+                        font-size: 2rem;
+                        height: 5rem;
+                        width: 5rem;
+                        line-height: 5rem;
+                        text-align: center;
+                        color: #51b6b6;
+                        background: #fff;
+                        border-radius: 0.5rem;"
+                         class="btn-cart fas fa-shopping-cart"> 
                     </button>
-                    <a href="{% url 'Home:cart' %}" type="submit" class="fas fa-shopping-cart"></a>
                     <a href="#" class="fas fa-info-circle"></a>
                 </div>
+                {% else %}
+                <div class="icons">
+                    <button disabled type="submit" style="
+                        font-size: 2rem;
+                        height: 5rem;
+                        width: 5rem;
+                        line-height: 5rem;
+                        text-align: center;
+                        color: #51b6b6;
+                        background: #fff;
+                        border-radius: 0.5rem;"
+                         class="btn-cart fas fa-shopping-cart"> 
+                    </button>
+                    <a href="#" class="fas fa-info-circle"></a>
+                </div>
+                {% endif %}
                 <div class="image">
                     <img src="{{ p.product_image.url }}" alt="">
                 </div>
@@ -103,12 +128,37 @@
             {% csrf_token %}
             <div class="swiper-slide slide">
                 <a href="#" class="btn2">{{ p.available }}</a>
+                {% if p.available == 'In Stock' %}
                 <div class="icons">
-                    <button type="submit" class="btn-cart"> Add to Cart
+                    <button type="submit" style="
+                        font-size: 2rem;
+                        height: 5rem;
+                        width: 5rem;
+                        line-height: 5rem;
+                        text-align: center;
+                        color: #51b6b6;
+                        background: #fff;
+                        border-radius: 0.5rem;"
+                         class="btn-cart fas fa-shopping-cart"> 
                     </button>
-                    <a href="{% url 'Home:cart' %}" type="submit" class="fas fa-shopping-cart"></a>
                     <a href="#" class="fas fa-info-circle"></a>
                 </div>
+                {% else %}
+                <div class="icons">
+                    <button disabled type="submit" style="
+                        font-size: 2rem;
+                        height: 5rem;
+                        width: 5rem;
+                        line-height: 5rem;
+                        text-align: center;
+                        color: #51b6b6;
+                        background: #fff;
+                        border-radius: 0.5rem;"
+                         class="btn-cart fas fa-shopping-cart"> 
+                    </button>
+                    <a href="#" class="fas fa-info-circle"></a>
+                </div>
+                {% endif %}
                 <div class="image">
                     <img src="{{ p.product_image.url }}" alt="">
                 </div>
@@ -145,12 +195,37 @@
             {% csrf_token %}
             <div class="swiper-slide slide">
                 <a href="#" class="btn2">{{ p.available }}</a>
+                {% if p.available == 'In Stock' %}
                 <div class="icons">
-                    <button type="submit" class="btn-cart"> Add to Cart
+                    <button type="submit" style="
+                        font-size: 2rem;
+                        height: 5rem;
+                        width: 5rem;
+                        line-height: 5rem;
+                        text-align: center;
+                        color: #51b6b6;
+                        background: #fff;
+                        border-radius: 0.5rem;"
+                         class="btn-cart fas fa-shopping-cart"> 
                     </button>
-                    <a href="{% url 'Home:cart' %}" type="submit" class="fas fa-shopping-cart"></a>
                     <a href="#" class="fas fa-info-circle"></a>
                 </div>
+                {% else %}
+                <div class="icons">
+                    <button disabled type="submit" style="
+                        font-size: 2rem;
+                        height: 5rem;
+                        width: 5rem;
+                        line-height: 5rem;
+                        text-align: center;
+                        color: #51b6b6;
+                        background: #fff;
+                        border-radius: 0.5rem;"
+                         class="btn-cart fas fa-shopping-cart"> 
+                    </button>
+                    <a href="#" class="fas fa-info-circle"></a>
+                </div>
+                {% endif %}
                 <div class="image">
                     <img src="{{ p.product_image.url }}" alt="">
                 </div>
@@ -187,12 +262,37 @@
             {% csrf_token %}
             <div class="swiper-slide slide">
                 <a href="#" class="btn2">{{ p.available }}</a>
+                {% if p.available == 'In Stock' %}
                 <div class="icons">
-                    <button type="submit" class="btn-cart"> Add to Cart
+                    <button type="submit" style="
+                        font-size: 2rem;
+                        height: 5rem;
+                        width: 5rem;
+                        line-height: 5rem;
+                        text-align: center;
+                        color: #51b6b6;
+                        background: #fff;
+                        border-radius: 0.5rem;"
+                         class="btn-cart fas fa-shopping-cart"> 
                     </button>
-                    <a href="{% url 'Home:cart' %}" type="submit" class="fas fa-shopping-cart"></a>
                     <a href="#" class="fas fa-info-circle"></a>
                 </div>
+                {% else %}
+                <div class="icons">
+                    <button disabled type="submit" style="
+                        font-size: 2rem;
+                        height: 5rem;
+                        width: 5rem;
+                        line-height: 5rem;
+                        text-align: center;
+                        color: #51b6b6;
+                        background: #fff;
+                        border-radius: 0.5rem;"
+                         class="btn-cart fas fa-shopping-cart"> 
+                    </button>
+                    <a href="#" class="fas fa-info-circle"></a>
+                </div>
+                {% endif %}
                 <div class="image">
                     <img src="{{ p.product_image.url }}" alt="">
                 </div>
@@ -248,16 +348,23 @@
     
             <div class="swiper-wrapper">
                 {% for p in featured %}
-                <form action="{% url 'Home:addcart' p.id  %}" method="POST">
-                {% csrf_token %}
+                <form action="{% url 'Home:login' %}">
                 <div class="swiper-slide slide">
                     <a href="#" class="btn2">{{ p.available }}</a>
-                    <div class="icons">
-                        <button type="submit" class="btn-cart"> Add to Cart
-                        </button>
-                        <a href="{% url 'Home:cart' %}" type="submit" class="fas fa-shopping-cart"></a>
-                        <a href="#" class="fas fa-info-circle"></a>
-                    </div>
+                <div class="icons">
+                    <button type="submit" style="
+                        font-size: 2rem;
+                        height: 5rem;
+                        width: 5rem;
+                        line-height: 5rem;
+                        text-align: center;
+                        color: #51b6b6;
+                        background: #fff;
+                        border-radius: 0.5rem;"
+                         class="btn-cart fas fa-shopping-cart"> 
+                    </button>
+                    <a href="#" class="fas fa-info-circle"></a>
+                </div>
                     <div class="image">
                         <img src="{{ p.product_image.url }}" alt="">
                     </div>
@@ -299,16 +406,23 @@
     
             <div class="swiper-wrapper">
                 {% for p in skin %}
-                <form action="{% url 'Home:addcart' p.id  %}" method="POST">
-                {% csrf_token %}
+                <form action="{% url 'Home:login'  %}">
                 <div class="swiper-slide slide">
-                    <a href="#" class="btn2">{{ p.available }}</a>
-                    <div class="icons">
-                        <button type="submit" class="btn-cart"> Add to Cart
-                        </button>
-                        <a href="{% url 'Home:cart' %}" type="submit" class="fas fa-shopping-cart"></a>
-                        <a href="#" class="fas fa-info-circle"></a>
-                    </div>
+                <a href="#" class="btn2">{{ p.available }}</a>
+                <div class="icons">
+                    <button type="submit" style="
+                        font-size: 2rem;
+                        height: 5rem;
+                        width: 5rem;
+                        line-height: 5rem;
+                        text-align: center;
+                        color: #51b6b6;
+                        background: #fff;
+                        border-radius: 0.5rem;"
+                         class="btn-cart fas fa-shopping-cart"> 
+                    </button>
+                    <a href="#" class="fas fa-info-circle"></a>
+                </div>
                     <div class="image">
                         <img src="{{ p.product_image.url }}" alt="">
                     </div>

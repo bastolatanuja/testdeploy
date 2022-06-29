@@ -15,4 +15,21 @@ class UserResgistrationForm(forms.ModelForm):
     def get_id(self):
         return self.user.id
     
+class UserUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ["username","first_name","last_name","email"]
+
+    def get_id(self):
+        return self.user.id
     
+class UserResetForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ["password"]
+        widgets = {
+            'password': forms.PasswordInput()
+        }
+
+    def get_id(self):
+        return self.user.id

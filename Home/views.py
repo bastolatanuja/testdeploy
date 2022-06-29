@@ -6,10 +6,10 @@ from django.urls.conf import include
 from django.contrib import messages
 from django.contrib.auth import  authenticate , get_user_model , login , logout
 from django.contrib.auth.models import User ,auth
-from Home.forms import UserResgistrationForm
+from Home.forms import UserResetForm, UserResgistrationForm, UserUpdateForm
 from django.views import generic
 from django.shortcuts import render 
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
 from django.views import generic
 from .models import Blog
 from.models import Portfolio, Product
@@ -17,7 +17,6 @@ from Home.forms import UserResgistrationForm
 from . import forms
 from . import models
 from .models import Cart, CartItem
-
 
 # For reset password
 from django.core.mail import send_mail, BadHeaderError
@@ -27,8 +26,6 @@ from django.db.models.query_utils import Q
 from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
-
-
 from django.views import generic
 
 User = get_user_model()
@@ -133,7 +130,8 @@ def password_reset_request(request):
 						return HttpResponse('Invalid header found.')
 					return redirect ("/password_reset/done/")
 	password_reset_form = PasswordResetForm()
-	return render(request=request, template_name="accounts/password_reset_form.html", context={"password_reset_form":password_reset_form})
+	return render(request=request, template_name="accounts/password_reset_form.html",
+        context={"password_reset_form":password_reset_form})
 
  
 
@@ -148,7 +146,7 @@ def contact_us(request):
             name, #subject
             message, #message
             email, #from email
-            ['biruwahamro@gmail.com' ], #To email
+            [ email ], #To email
         )
         messages.success(request, "Thanks for sending the message! We'll get back to you later")
         return render(request, 'pages/contactus.html')
@@ -170,7 +168,13 @@ def portfolio_two(request):
     return render(request,'pages/portfolio2.html')
 
 def shop(request):
-    return render(request,'shop/shop.html')
+    products=models.Product.objects.all()
+    data = {
+        'products':products,
+     
+    }
+    return render(request, 'shop/shop.html', data)
+    
 
 def services(request):
     return render(request,'pages/ourservices.html')
@@ -185,8 +189,9 @@ def helpsection(request):
     return render(request,'pages/helpsection.html')
 
 
-def prescription(request):
-    return render(request,'pages/prescription.html')
+def prescription(request, p_id):
+    product = Product.objects.get(id=p_id)
+    return render(request,'pages/prescription.html', {"product" : product})
 
 class Blogview(generic.ListView):
     model=Blog
@@ -212,22 +217,29 @@ def dash(request):
     return render(request,'pages/dash.html') 
 
 def resetpassword(request):
+    user = User.objects.get(id=request.user.id)
+    print(user.password)
+    if request.method == "POST":
+        password = request.POST['password']
+        conpassword = request.POST['confirmpassword']
+        user.set_password(password)
+        user.save()
+        auth.logout(request)
+        return redirect("/")
     return render(request,'pages/resetpassword.html')     
 
 def edit_profile(request):
     user=User.objects.get(id=request.user.id)
-    userForm=UserResgistrationForm(instance=user)
-    mydict={
-        'userForm':userForm,
-        'user':user
-    }
+    # userForm=UserResgistrationForm(instance=user)
     if request.method=='POST':
-        userForm=UserResgistrationForm(request.POST, request.FILES, instance=user)
-        if userForm.is_valid():
-            userForm.save()
+        userForm1=UserUpdateForm(request.POST, request.FILES, instance=user)
+        print(userForm1)
+        if userForm1.is_valid():
+            print('hello')
+            userForm1.save()
             messages.success(request, "Account Sucessfully Updated")
-            return HttpResponseRedirect('Home:dash')
-    return render(request,'pages/editprofile.html',context=mydict)
+            return redirect('/dash/')
+    return render(request,'pages/editprofile.html',{'user':user})
 
 def _cart_id(request):
     cart_id = request.session.session_key
@@ -262,6 +274,11 @@ def addcart(request, product_id):
             messages.success(request, "Item Added In Cart")
 
         return redirect('Home:cart')
+
+def remove(request, product_id):
+    product = CartItem.objects.get(id=product_id)
+    product.delete()
+    return redirect("Home:cart")
     
 def cart(request, cart_items=None):
     try:
@@ -278,6 +295,7 @@ def cart(request, cart_items=None):
     }
 
     return render(request, 'pages/cart.html', context)
+
 
 
 def SearchView(request):

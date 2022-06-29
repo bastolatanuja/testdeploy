@@ -17,7 +17,7 @@ urlpatterns = [
   path("doctors/", views.doctors, name='doctors'),
   path("helpsection/", views.helpsection, name='helpsection'),
   path("cart/", views.cart, name='cart'),
-  path("prescription/", views.prescription, name='prescription'),
+  path("prescription/<int:p_id>/", views.prescription, name='prescription'),
 
    
   path('blog/',views.Blogview.as_view(), name="blog"),
@@ -31,10 +31,9 @@ urlpatterns = [
   path('resetpassword/', views.resetpassword, name='resetpassword'),
   path('editprofile/', views.edit_profile ,name='editprofile'),
 
-
   path('cart', views.cart, name='cart'),
   path('addcart/<int:product_id>/', views.addcart, name="addcart"),
-
+  path('remove/<int:product_id>/', views.remove, name='remove'),
 
   path("search/", views.SearchView, name="search"),
   path("searchresult/", views.searchresult, name="searchresult"),
