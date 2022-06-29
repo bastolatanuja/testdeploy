@@ -314,3 +314,6 @@ def searchresult(request):
 
 def cartdash(request):
     return render(request,'pages/cartdash.html')    
+
+def payments(request):
+    return render(request,'pages/payments.html')  

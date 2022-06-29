@@ -2,6 +2,9 @@
 {% load static %}
 {% block title %} Cart {% endblock %}
 {% block content %}
+
+
+<link rel="shortcut icon" href=" {% static 'image/logo.png' %}">
  <!--TITLE-->
 <title>Mediserv+ | Cart</title>
 
@@ -10,7 +13,7 @@
 <link rel="stylesheet" href="{% static 'css/cart.css' %}">
 <div class="container flex">
     <div class="structure">
-      <a href="{% url 'Home:home' %}" class="btncont"><b>Continue Shooping</b></a>
+      <a href="{% url 'Home:home' %}"   class="btncont"><b> &#8592 Continue Shooping</b></a>
       <h1>Shopping cart</h1>
   
       <table id="table">
