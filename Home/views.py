@@ -189,6 +189,9 @@ def helpsection(request):
     return render(request,'pages/helpsection.html')
 
 
+def productdetails(request):
+    return render(request,'pages/productdetails.html')
+
 def prescription(request, p_id):
     product = Product.objects.get(id=p_id)
     return render(request,'pages/prescription.html', {"product" : product})

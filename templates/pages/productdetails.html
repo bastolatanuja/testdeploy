@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Our Services {% endblock %}
+{% block content %}
+
+
+  <!-- products details starts -->
+  <div class="container">
+    <div class="box-container">
+
+      <h1 class="heading"> <span>Product</span> Name </h1>
+
+      <div class="box">
+        <div class="image-container">
+          <div class="small-image">
+            <img src= "{% static 'image/vitamin-c-tablet-500x500.jpg' %}" alt="">
+            <img src= "{% static 'image/vitamin-c-tablet-500x500.jpg' %}" alt="">
+            <img src= "{% static 'image/vitamin-c-tablet-500x500.jpg' %}" alt="">
+            <img src= "{% static 'image/vitamin-c-tablet-500x500.jpg' %}" alt="">
+
+          </div>
+          <div class="big-image">
+            <img src= "{% static 'image/vitamin-c-tablet-500x500.jpg' %}" alt="">
+          </div>
+        </div>
+        <div class="content">
+          <h3>Vitamin C</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum harum quas quae, provident et corrupti nam
+            ex aperiam saepe nulla!</p>
+          <br>
+          <br>
+          <p> <span style="font-weight: bold;">Mfg. Date : </span>14 december 2021</p>
+          <p><span style="font-weight: bold;">Exp. Date : </span>14 august 2022</p>
+
+          <div class="price"> Nrs. 9999 </div>
+          <a href="#" class="btn">Add to cart</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- products details ends -->
+  <script src="{% static 'js/product.js' %}"></script>
+
+  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+  
+{% endblock %}
