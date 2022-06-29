@@ -37,6 +37,7 @@ urlpatterns = [
 
   path("search/", views.SearchView, name="search"),
   path("searchresult/", views.searchresult, name="searchresult"),
+  path("cartdash/", views.cartdash, name="cartdash"),
 
 ]
 

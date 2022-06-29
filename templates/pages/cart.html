@@ -2,7 +2,11 @@
 {% load static %}
 {% block title %} Cart {% endblock %}
 {% block content %}
- 
+ <!--TITLE-->
+<title>Mediserv+ | Cart</title>
+
+<link rel="shortcut icon" href=" {% static 'image/logo.png' %}">
+
 <link rel="stylesheet" href="{% static 'css/cart.css' %}">
 <div class="container flex">
     <div class="structure">
@@ -40,7 +44,7 @@
            
       </table>
       <h2>Total : <span id="total_display">0 </span></h2>
-      <a href=" " class="btndanger">Checkout</a>
+      <a href="{% url 'Home:cartdash' %} " class="btndanger">Checkout</a>
       
     </div>
     

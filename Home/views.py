@@ -309,3 +309,8 @@ def searchresult(request):
     products = Product.objects.filter(name__icontains =query)
     context ={ 'products':products}
     return render(request,'pages/search.html',context)  
+
+
+
+def cartdash(request):
+    return render(request,'pages/cartdash.html')    
