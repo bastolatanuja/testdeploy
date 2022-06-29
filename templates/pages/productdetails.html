@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{% comment %} {% extends 'base.html' %}
 {% load static %}
-{% block title %} Our Services {% endblock %}
+{% block title %} Product Details {% endblock %}
 {% block content %}
 
 
@@ -8,31 +8,37 @@
   <div class="container">
     <div class="box-container">
 
-      <h1 class="heading"> <span>Product</span> Name </h1>
+      <h1 class="heading"> <span>Product</span> Details </h1>
 
       <div class="box">
         <div class="image-container">
           <div class="small-image">
-            <img src= "{% static 'image/vitamin-c-tablet-500x500.jpg' %}" alt="">
-            <img src= "{% static 'image/vitamin-c-tablet-500x500.jpg' %}" alt="">
-            <img src= "{% static 'image/vitamin-c-tablet-500x500.jpg' %}" alt="">
-            <img src= "{% static 'image/vitamin-c-tablet-500x500.jpg' %}" alt="">
-
+            {% if single_product.product_photo_1 %}
+            <img src= "{{ single_product.product_photo_1.url }}"  alt="">
+            {% endif %}
+            {% if single_product.product_photo_2 %}
+            <img src= "{{ single_product.product_photo_2.url }}" alt="">
+            {% endif %}
+            {% if single_product.product_photo_3 %}
+            <img src= "{{ single_product.product_photo_3.url }}"alt="">
+            {% endif %}
+            {% if single_product.product_photo_3 %}
+            <img src= "{{ single_product.product_photo_4.url }}" alt="">
+            {% endif %}
           </div>
           <div class="big-image">
-            <img src= "{% static 'image/vitamin-c-tablet-500x500.jpg' %}" alt="">
+            <img src="{{ single_product.product_image.url }}" alt="">
           </div>
         </div>
         <div class="content">
-          <h3>Vitamin C</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum harum quas quae, provident et corrupti nam
-            ex aperiam saepe nulla!</p>
+          <h3>{{single_product.name}}</h3>
+          <p>{{ single_product.description | safe }}</p>
           <br>
           <br>
           <p> <span style="font-weight: bold;">Mfg. Date : </span>14 december 2021</p>
           <p><span style="font-weight: bold;">Exp. Date : </span>14 august 2022</p>
 
-          <div class="price"> Nrs. 9999 </div>
+          <div class="price">Rs.{{single_product.price}} </div>
           <a href="#" class="btn">Add to cart</a>
         </div>
       </div>
@@ -44,4 +50,4 @@
 
   <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
   
-{% endblock %}
+{% endblock %} {% endcomment %}
