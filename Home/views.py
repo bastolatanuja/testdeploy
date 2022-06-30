@@ -57,14 +57,11 @@ def home(request):
 #     }
 #     return render(request, 'pages/shop.html', data)
 
-def product_details(request):
-    # single_product = get_object_or_404(Product, pk=id)
+def product_details(request,p_id):
+    product_detail = Product.objects.get(id = p_id)
 
-    # data = {
-    #     'single_product': single_product,
-    # }
 
-    return render(request, 'pages/productdetails.html')
+    return render(request, 'pages/productdetails.html',{'single_product':product_detail})
 
 def register(request):
     if request.method == 'POST':
