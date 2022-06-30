@@ -39,9 +39,12 @@
             <td>{{ p.product.price }}</td>
             <td class="quantity"><input type="number" placeholder="Unit price" min="0" value="1" contenteditable></td>
             <td class="subtotal">  0</td>
-            <td class="remove"><button type="button">Remove</button></td>
+            <td class="remove">
+              <a href = "{% url 'Home:remove'  p.id  %}" type=button >Remove</a>
+            </td>
+
           </tr>
-           
+      
         </tbody>
         {% endfor %}
            
@@ -81,7 +84,7 @@
 </style>
 <script>
      
-document.querySelectorAll(".remove").forEach(removebtn => removebtn.addEventListener("click", removeProduct));
+{% comment %} document.querySelectorAll(".remove").forEach(removebtn => removebtn.addEventListener("click", removeProduct)); {% endcomment %}
 document.querySelectorAll(".quantity").forEach(qty => qty.addEventListener("change", changeSubtotal));
 total();
 
@@ -114,7 +117,7 @@ function addProduct(){
   td3.innerHTML = priceProduct.value;
   td4.innerHTML = '<input type="number" class="quantity" value="1" min="0">';
   td5.innerHTML = priceProduct.value;
-  td6.innerHTML = '<button type="button" class="remove">Remove</i></button>';
+  {% comment %} td6.innerHTML = '<button type="button" class="remove">Remove</i></button>'; {% endcomment %}
 
   td4.addEventListener("change", changeSubtotal);
   td6.addEventListener("click", removeProduct);
@@ -132,12 +135,11 @@ function changeSubtotal(element) {
   total();
 }
 
-// Remove a product
+{% comment %} // Remove a product
 function removeProduct() {
   this.parentElement.parentElement.removeChild(this.parentElement);
   total();
-}
-
+} {% endcomment %}
 // Sum total
 function total(){
   let totalDisplay = document.getElementById("total_display");

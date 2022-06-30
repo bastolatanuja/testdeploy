@@ -1,7 +1,7 @@
 from tokenize import Number
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from django.shortcuts import redirect, render, HttpResponse
+from django.shortcuts import redirect, get_object_or_404, render, HttpResponse
 from django.urls.conf import include
 from django.contrib import messages
 from django.contrib.auth import  authenticate , get_user_model , login , logout
@@ -17,6 +17,7 @@ from Home.forms import UserResgistrationForm
 from . import forms
 from . import models
 from .models import Cart, CartItem
+from django.core.paginator import Paginator
 
 # For reset password
 from django.core.mail import send_mail, BadHeaderError
@@ -46,6 +47,24 @@ def home(request):
     }
     return render(request, 'pages/home.html', data)
 
+# def product(request):
+#     product = Product.objects.order_by('-created_date')
+#     paginator = Paginator(product, 2)
+#     page = request.GET.get('page')
+#     paged_product = paginator.get_page(page)
+#     data = {
+#         'product': paged_product,
+#     }
+#     return render(request, 'pages/shop.html', data)
+
+def product_details(request):
+    # single_product = get_object_or_404(Product, pk=id)
+
+    # data = {
+    #     'single_product': single_product,
+    # }
+
+    return render(request, 'pages/productdetails.html')
 
 def register(request):
     if request.method == 'POST':
@@ -309,7 +328,6 @@ def searchresult(request):
     products = Product.objects.filter(name__icontains =query)
     context ={ 'products':products}
     return render(request,'pages/search.html',context)  
-
 
 
 def cartdash(request):
