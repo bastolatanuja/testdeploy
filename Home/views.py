@@ -201,8 +201,8 @@ def ambulance(request):
 def doctors(request):
     return render(request,'pages/doctors.html')
 
-def helpsection(request):
-    return render(request,'pages/helpsection.html')
+def faq(request):
+    return render(request,'pages/faq.html')
 
 
 def prescription(request, p_id):

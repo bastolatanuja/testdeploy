@@ -15,7 +15,7 @@ urlpatterns = [
   path("ourservices/", views.services, name='ourservices'),
   path("ambulance/", views.ambulance, name='ambulance'),
   path("doctors/", views.doctors, name='doctors'),
-  path("helpsection/", views.helpsection, name='helpsection'),
+  path("faq/", views.faq, name='faq'),
   path("productdetails/<int:p_id>", views.product_details, name='productdetails'),
 
   path("cart/", views.cart, name='cart'),
