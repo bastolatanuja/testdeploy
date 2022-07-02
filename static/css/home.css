@@ -60,7 +60,8 @@ section {
 }
 
 .btn:hover {
-    background: #130f40;
+    background: #0b0b0b;
+    text-decoration: none;
 }
 .btn2 {
     display: inline-block;
@@ -71,6 +72,25 @@ section {
     font-size: 1.7rem;
     cursor: pointer;
 }
+
+.btnbuy{
+    display: inline-block;
+    padding: .9rem 3rem;
+    border-radius: .5rem;
+    background: #02643f;
+    color: #fff;
+    font-size: 1.7rem;
+    cursor: pointer;
+
+}
+
+.btnbuy:hover {
+    background: #86cdce;
+    color:black;
+    text-decoration: none;
+}
+ 
+ 
 .btn3 {
     display: inline-block;
     padding: .9rem 3rem;
@@ -818,6 +838,12 @@ section {
     font-size: 1.7rem;
     cursor: pointer;
 }
+.option-btn:hover {
+    background: #86cdce;
+    color:black;
+    text-decoration: none;
+}
+
 .delete-btn{
     display: inline-block;
     padding: .9rem 3rem;
@@ -837,9 +863,16 @@ section {
     color: #fff;
     margin-top:1rem;
     font-size: 1.7rem;
+    margin-left: auto;
     cursor: pointer;
     margin-left:61px;
 
+}
+
+.btnshop:hover {
+    background: #86cdce;
+    color:black;
+    text-decoration: none;
 }
 .header .user-box {
     position: absolute;
