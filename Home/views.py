@@ -6,7 +6,7 @@ from django.urls.conf import include
 from django.contrib import messages
 from django.contrib.auth import  authenticate , get_user_model , login , logout
 from django.contrib.auth.models import User ,auth
-from Home.forms import UserResetForm, UserResgistrationForm, UserUpdateForm
+from Home.forms import Prescription, UserResetForm, UserResgistrationForm, UserUpdateForm
 from django.views import generic
 from django.shortcuts import render 
 from django.core.mail import send_mail, EmailMessage
@@ -204,10 +204,16 @@ def doctors(request):
 def faq(request):
     return render(request,'pages/faq.html')
 
-
-def prescription(request, p_id):
-    product = Product.objects.get(id=p_id)
-    return render(request,'pages/prescription.html', {"product" : product})
+def prescription(request):
+    if request.method == "POST":
+        form = Prescription(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                form.save()
+                return redirect('Home:cartdash')
+            except:
+                print("Invalid")
+    return render(request,'pages/prescription.html')
 
 class Blogview(generic.ListView):
     model=Blog

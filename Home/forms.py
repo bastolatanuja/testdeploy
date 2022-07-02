@@ -1,6 +1,7 @@
+from dataclasses import fields
 from django import forms
 from django.contrib.auth import get_user_model
-from .models import  User
+from .models import  User, prescription
 
 User = get_user_model()
 
@@ -33,3 +34,8 @@ class UserResetForm(forms.ModelForm):
 
     def get_id(self):
         return self.user.id
+
+class Prescription(forms.ModelForm):
+    class Meta:
+        model = prescription
+        fields = ("__all__")

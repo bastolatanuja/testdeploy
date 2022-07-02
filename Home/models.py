@@ -97,3 +97,10 @@ class CartItem(models.Model):
     
     def __unicode__(self):
         return self.product
+
+
+class prescription(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    image = models.FileField(upload_to="prescription")
+
+

@@ -19,7 +19,7 @@ urlpatterns = [
   path("productdetails/<int:p_id>", views.product_details, name='productdetails'),
 
   path("cart/", views.cart, name='cart'),
-  path("prescription/<int:p_id>/", views.prescription, name='prescription'),
+  path("prescription/", views.prescription, name='prescription'),
 
    
   path('blog/',views.Blogview.as_view(), name="blog"),
