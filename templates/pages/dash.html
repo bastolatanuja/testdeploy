@@ -60,7 +60,8 @@
 </section>
  
 <br><br>
-<a href="{% url 'Home:resetpassword' %}" class="btn">Change Password</a>  <a href="#" class="btndanger">Delete Account</a>
+<a href="{% url 'Home:resetpassword' %}" class="btn">Change Password</a>  
+<a href="/deleteuser/{{ request.user.id}}" class="btndanger">Delete Account</a>
  
 </td>
 <td>

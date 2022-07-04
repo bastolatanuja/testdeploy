@@ -75,7 +75,7 @@
       margin-top: 0rem;
       
       border-radius: .5rem;
-       {% comment %} background: #51b6b6;   {% endcomment %}
+      background: #51b6b6;  
       color: red;
       font-size: 1.4rem;
       cursor: pointer;
@@ -84,7 +84,7 @@
 </style>
 <script>
      
-{% comment %} document.querySelectorAll(".remove").forEach(removebtn => removebtn.addEventListener("click", removeProduct)); {% endcomment %}
+// {% comment %} document.querySelectorAll(".remove").forEach(removebtn => removebtn.addEventListener("click", removeProduct)); {% endcomment %}
 document.querySelectorAll(".quantity").forEach(qty => qty.addEventListener("change", changeSubtotal));
 total();
 
@@ -117,7 +117,7 @@ function addProduct(){
   td3.innerHTML = priceProduct.value;
   td4.innerHTML = '<input type="number" class="quantity" value="1" min="0">';
   td5.innerHTML = priceProduct.value;
-  {% comment %} td6.innerHTML = '<button type="button" class="remove">Remove</i></button>'; {% endcomment %}
+  // {% comment %} td6.innerHTML = '<button type="button" class="remove">Remove</i></button>'; {% endcomment %}
 
   td4.addEventListener("change", changeSubtotal);
   td6.addEventListener("click", removeProduct);
@@ -135,11 +135,11 @@ function changeSubtotal(element) {
   total();
 }
 
-{% comment %} // Remove a product
-function removeProduct() {
-  this.parentElement.parentElement.removeChild(this.parentElement);
-  total();
-} {% endcomment %}
+// {% comment %} // Remove a product
+// function removeProduct() {
+//   this.parentElement.parentElement.removeChild(this.parentElement);
+//   total();
+// } {% endcomment %}
 // Sum total
 function total(){
   let totalDisplay = document.getElementById("total_display");

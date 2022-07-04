@@ -104,3 +104,11 @@ class prescription(models.Model):
     image = models.FileField(upload_to="prescription")
 
 
+class cashdevlivery(models.Model):
+    firstname = models.CharField(max_length=50,db_index=True)
+    lastname = models.CharField(max_length=50,db_index=True)
+    address = models.CharField(max_length=50,db_index=True)
+    contact = models.CharField(max_length=50,db_index=True)
+
+
+

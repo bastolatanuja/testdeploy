@@ -41,6 +41,9 @@ urlpatterns = [
   path("searchresult/", views.searchresult, name="searchresult"),
   path("cartdash/", views.cartdash, name="cartdash"),
   path("payments/", views.payments, name="payments"),
+  path("cashdelivery", views.cashdelivery, name="cashdelivery"),
+
+  path("deleteuser/<int:user_id>", views.delete_user, name="deleteuser"),
 
 ]
 

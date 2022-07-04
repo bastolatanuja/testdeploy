@@ -1,7 +1,7 @@
 from dataclasses import fields
 from django import forms
 from django.contrib.auth import get_user_model
-from .models import  User, prescription
+from .models import  User, prescription, cashdevlivery
 
 User = get_user_model()
 
@@ -39,3 +39,9 @@ class Prescription(forms.ModelForm):
     class Meta:
         model = prescription
         fields = ("__all__")
+
+class Cashdelivery(forms.ModelForm):
+    class Meta:
+        model = cashdevlivery
+        fields = ("__all__")
+

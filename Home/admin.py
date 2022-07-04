@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Blog,Portfolio, prescription
+from .models import Blog,Portfolio, cashdevlivery, prescription
 from .models import Product
 from .models import Cart, CartItem
 
@@ -33,3 +33,5 @@ class CartItemAdmin(admin.ModelAdmin):
 admin.site.register(CartItem, CartItemAdmin)
 
 admin.site.register(prescription)
+
+admin.site.register(cashdevlivery)

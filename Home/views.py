@@ -6,7 +6,7 @@ from django.urls.conf import include
 from django.contrib import messages
 from django.contrib.auth import  authenticate , get_user_model , login , logout
 from django.contrib.auth.models import User ,auth
-from Home.forms import Prescription, UserResetForm, UserResgistrationForm, UserUpdateForm
+from Home.forms import Cashdelivery, Prescription, UserResetForm, UserResgistrationForm, UserUpdateForm
 from django.views import generic
 from django.shortcuts import render 
 from django.core.mail import send_mail, EmailMessage
@@ -338,3 +338,24 @@ def cartdash(request):
 
 def payments(request):
     return render(request,'pages/payments.html')  
+
+def cashdelivery(request):
+    if request.method == "POST":
+        form = Cashdelivery(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                form.save()
+                print('Messsage sent suyccessful');
+                messages.success(request, 'Item successfully Orderd.')
+                return redirect("Home:home")                
+            except:
+                print("Invalid")
+                
+    return render(request, 'pages/cashdelivery.html')
+
+def delete_user(request, user_id):
+    user = User.objects.get(id=user_id)
+    user.delete()
+    messages.add_message(request, messages.SUCCESS, 'Úser is deleted successfully')
+    return redirect('Home:register')
+    
