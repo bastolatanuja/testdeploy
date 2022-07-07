@@ -2,16 +2,17 @@ from tokenize import Number
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, get_object_or_404, render, HttpResponse
+from django.urls import reverse_lazy
 from django.urls.conf import include
 from django.contrib import messages
 from django.contrib.auth import  authenticate , get_user_model , login , logout
 from django.contrib.auth.models import User ,auth
-from Home.forms import Prescription, UserResetForm, UserResgistrationForm, UserUpdateForm
+from Home.forms import CheckoutItems, Prescription, UserResetForm, UserResgistrationForm, UserUpdateForm, changeDpForm
 from django.views import generic
 from django.shortcuts import render 
 from django.core.mail import send_mail, EmailMessage
 from django.views import generic
-from .models import Blog
+from .models import Blog, UserProfile
 from.models import Portfolio, Product
 from Home.forms import UserResgistrationForm
 from . import forms
@@ -121,32 +122,32 @@ def about_us(request):
     return render(request, 'pages/aboutus.html') 
 
 def password_reset_request(request):
-	if request.method == "POST":
-		password_reset_form = PasswordResetForm(request.POST)
-		if password_reset_form.is_valid():
-			data = password_reset_form.cleaned_data['email']
-			associated_users = User.objects.filter(Q(email=data))
-			if associated_users.exists():
-				for user in associated_users:
-					subject = "Password Reset Requested"
-					email_template_name = "accounts/password_reset_email.txt"
-					c = {
-					"email":user.email,
-					'domain':'127.0.0.1:8000',
-					'site_name': 'Website',
-					"uid": urlsafe_base64_encode(force_bytes(user.pk)),
-					"user": user,
-					'token': default_token_generator.make_token(user),
-					'protocol': 'http',
-					}
-					email = render_to_string(email_template_name, c)
-					try:
-						send_mail(subject, email, 'biruwahamro@gmail.com' , [user.email], fail_silently=False)
-					except BadHeaderError:
-						return HttpResponse('Invalid header found.')
-					return redirect ("/password_reset/done/")
-	password_reset_form = PasswordResetForm()
-	return render(request=request, template_name="accounts/password_reset_form.html",
+    if request.method == "POST":
+        password_reset_form = PasswordResetForm(request.POST)
+        if password_reset_form.is_valid():
+            data = password_reset_form.cleaned_data['email']
+            associated_users = User.objects.filter(Q(email=data))
+            if associated_users.exists():
+                for user in associated_users:
+                    subject = "Password Reset Requested"
+                    email_template_name = "accounts/password_reset_email.txt"
+                    c = {
+                    "email":user.email,
+                    'domain':'127.0.0.1:8000',
+                    'site_name': 'Website',
+                    "uid": urlsafe_base64_encode(force_bytes(user.pk)),
+                    "user": user,
+                    'token': default_token_generator.make_token(user),
+                    'protocol': 'http',
+                    }
+                    email = render_to_string(email_template_name, c)
+                    try:
+                        send_mail(subject, email, 'biruwahamro@gmail.com' , [user.email], fail_silently=False)
+                    except BadHeaderError:
+                        return HttpResponse('Invalid header found.')
+                    return redirect ("/password_reset/done/")
+    password_reset_form = PasswordResetForm()
+    return render(request=request, template_name="accounts/password_reset_form.html",
         context={"password_reset_form":password_reset_form})
 
  
@@ -263,6 +264,10 @@ def edit_profile(request):
             return redirect('/dash/')
     return render(request,'pages/editprofile.html',{'user':user})
 
+
+
+def get_object(self):
+    return self.request.user
 def _cart_id(request):
     cart_id = request.session.session_key
     if not cart_id:
@@ -303,6 +308,14 @@ def remove(request, product_id):
     return redirect("Home:cart")
     
 def cart(request, cart_items=None):
+    if request.method == "POST":
+        product = CheckoutItems(request.POST, request.FILES)
+        if product.is_valid():
+            try:
+                product.save()
+                return redirect("Home:prescription")
+            except:
+                print(request.POST)
     try:
         if request.user.is_authenticated:
             cart_items = CartItem.objects.all().filter(user=request.user)
@@ -338,3 +351,9 @@ def cartdash(request):
 
 def payments(request):
     return render(request,'pages/payments.html')  
+
+class ChangeDP(generic.UpdateView):
+    model = UserProfile
+    template_name = "pages/dash.html"
+    fields="__all__"
+    success_url=reverse_lazy('Home:dash')

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Blog,Portfolio, prescription
+from .models import Blog,Portfolio, prescription,UserProfile
 from .models import Product
 from .models import Cart, CartItem
 
@@ -12,6 +12,10 @@ class BlogAdmin(admin.ModelAdmin):
 class BlogAdmin(admin.ModelAdmin):
     list_display = ('id','name','is_active')
     readonly_fields = ('slug',)
+
+@admin.register(UserProfile)
+class UserProfileAdmin(admin.ModelAdmin):
+    list_display = ("id", "user")
 
 class ProductAdmin(admin.ModelAdmin):
     pass
@@ -33,3 +37,4 @@ class CartItemAdmin(admin.ModelAdmin):
 admin.site.register(CartItem, CartItemAdmin)
 
 admin.site.register(prescription)
+

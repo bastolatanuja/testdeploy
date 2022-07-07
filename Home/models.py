@@ -1,8 +1,12 @@
+from hashlib import blake2b
 from statistics import mode
+from tkinter.tix import Tree
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from datetime import datetime
+from django.urls import reverse
+from numpy import product, quantile
 
 class Product(models.Model):
     available_choice = (
@@ -80,6 +84,18 @@ class Portfolio(models.Model):
     def get_absolute_url(self):
         return f"/portfolio/{self.slug}"
     
+class UserProfile(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'User Profiles'
+        verbose_name = 'User Profile'
+    
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    avatar = models.ImageField(blank=True, null=True, upload_to="avatar")
+    def __str__(self):
+        return f'{self.user.first_name} {self.user.last_name}'
+    def get_absolute_url(self):
+        return reverse('Home:home')
 
 class Cart(models.Model):
     cart_id = models.CharField(max_length=250, blank=True)
@@ -95,6 +111,9 @@ class CartItem(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
     is_active = models.BooleanField(default=True)
     
+
+
+    
     def __unicode__(self):
         return self.product
 
@@ -103,4 +122,13 @@ class prescription(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     image = models.FileField(upload_to="prescription")
 
+
+class checkoutItems(models.Model):
+    checkoutId = models.AutoField(primary_key=True,unique=True,auto_created=True)
+    productName = models.CharField(blank=True,max_length=50)
+    quantity = models.CharField(blank=True,max_length=10)
+    total = models.CharField(blank=True,max_length=10)
+
+    def __unicode__(self):
+        return self.checkoutId
 

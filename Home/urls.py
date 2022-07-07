@@ -41,6 +41,6 @@ urlpatterns = [
   path("searchresult/", views.searchresult, name="searchresult"),
   path("cartdash/", views.cartdash, name="cartdash"),
   path("payments/", views.payments, name="payments"),
-
+  path('updateDP/<int:pk>',views.ChangeDP.as_view(),name="updateDP"),
 ]
 
