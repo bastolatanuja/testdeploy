@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     <div class="col-lg-7 px-5 pt-5">
-                        <h1 class="font-weight-bold py-3 text-center">SIGN IN </h1>
+                        <h1 class="font-weight-bold py-3 text-center">SIGN UP </h1>
                         <form method="POST" enctype="multipart/form-data" action="{% url 'Home:register' %}">
                             {% csrf_token %}
 
@@ -83,7 +83,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-12 text-center">
-                                    <button type="submit" class="btn" value="Register">SIGN IN</button>
+                                    <button type="submit" class="btn" value="Register">SIGN UP</button>
                                 </div>
                             </div>
                             <p>Already have an account? <a href="{% url 'Home:login' %}">Log In</a></p>

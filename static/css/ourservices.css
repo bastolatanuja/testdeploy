@@ -611,3 +611,13 @@ section {
         display: none;
     }
 }
+.findambulance{
+    display: inline-block;
+    padding: 0.9rem 1rem;
+    border-radius: 0.5rem;
+    background: #51b6b6;
+    color: #fff;
+    margin-top: 1rem;
+    font-size: 1.7rem;
+    cursor: pointer;
+}
