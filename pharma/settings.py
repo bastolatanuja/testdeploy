@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'Home',
     'ckeditor',
     'widget_tweaks',
+    
 ]
 
 MIDDLEWARE = [
@@ -84,7 +86,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'medical',
         'USER': 'postgres',
+<<<<<<< HEAD
         'PASSWORD': '1590',
+=======
+        'PASSWORD': '8520',
+>>>>>>> e7bf551d183c050600ec9dcc8286f09bda897751
         'HOST': 'localhost',
     }
 }

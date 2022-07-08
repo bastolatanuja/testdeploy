@@ -10,7 +10,11 @@ from django.urls.conf import include
 from django.contrib import messages
 from django.contrib.auth import  authenticate , get_user_model , login , logout
 from django.contrib.auth.models import User ,auth
+<<<<<<< HEAD
 from Home.forms import Cashdelivery, Prescription, UserResetForm, UserResgistrationForm, UserUpdateForm, changeDpForm
+=======
+from Home.forms import Cashdelivery, Prescription, UserResetForm, UserResgistrationForm, UserUpdateForm
+>>>>>>> e7bf551d183c050600ec9dcc8286f09bda897751
 from django.views import generic
 from django.shortcuts import render 
 from django.core.mail import send_mail, EmailMessage
@@ -366,7 +370,11 @@ def cashdelivery(request):
         if form.is_valid():
             try:
                 form.save()
+<<<<<<< HEAD
                 print('Messsage sent suyccessful')
+=======
+                print('Messsage sent suyccessful');
+>>>>>>> e7bf551d183c050600ec9dcc8286f09bda897751
                 messages.success(request, 'Item successfully Orderd.')
                 return redirect("Home:home")                
             except:
@@ -379,6 +387,7 @@ def delete_user(request, user_id):
     user.delete()
     messages.add_message(request, messages.SUCCESS, 'Úser is deleted successfully')
     return redirect('Home:register')
+<<<<<<< HEAD
     
 class updateDPview(UpdateView):
     model = UserProfile
@@ -458,3 +467,6 @@ def invoice(request):
     buf.seek(0)
 
     return FileResponse(buf,as_attachment=True,filename='invoice.pdf')
+=======
+    
+>>>>>>> e7bf551d183c050600ec9dcc8286f09bda897751

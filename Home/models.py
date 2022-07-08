@@ -135,6 +135,7 @@ class cashdevlivery(models.Model):
         return reverse('Home:home')
 
 
+<<<<<<< HEAD
 class UserProfile(models.Model):
 
     class Meta:
@@ -157,3 +158,13 @@ class checkoutItems(models.Model):
     def __unicode__(self):
         return self.checkoutId
 
+=======
+class cashdevlivery(models.Model):
+    firstname = models.CharField(max_length=50,db_index=True)
+    lastname = models.CharField(max_length=50,db_index=True)
+    address = models.CharField(max_length=50,db_index=True)
+    contact = models.CharField(max_length=50,db_index=True)
+
+
+
+>>>>>>> e7bf551d183c050600ec9dcc8286f09bda897751

@@ -42,6 +42,11 @@ urlpatterns = [
   path("cartdash/", views.cartdash, name="cartdash"),
   path("payments/", views.payments, name="payments"),
   path("cashdelivery", views.cashdelivery, name="cashdelivery"),
+<<<<<<< HEAD
+=======
+
+  path("deleteuser/<int:user_id>", views.delete_user, name="deleteuser"),
+>>>>>>> e7bf551d183c050600ec9dcc8286f09bda897751
 
   path("deleteuser/<int:user_id>", views.delete_user, name="deleteuser"),
   path('updateDP/<int:pk>',views.updateDPview.as_view(),name="updateDP"),

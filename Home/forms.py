@@ -1,7 +1,11 @@
 from dataclasses import field, fields
 from django import forms
 from django.contrib.auth import get_user_model
+<<<<<<< HEAD
 from .models import  User, UserProfile, checkoutItems, prescription,CartItem,cashdevlivery
+=======
+from .models import  User, prescription, cashdevlivery
+>>>>>>> e7bf551d183c050600ec9dcc8286f09bda897751
 
 User = get_user_model()
 
@@ -45,6 +49,7 @@ class Cashdelivery(forms.ModelForm):
         model = cashdevlivery
         fields = ("__all__")
 
+<<<<<<< HEAD
 class changeDpForm(forms.ModelForm):
 	class Meta:
 		model = UserProfile
@@ -59,3 +64,5 @@ class CheckoutItems(forms.ModelForm):
     class Meta:
         model = checkoutItems
         fields = ("__all__")
+=======
+>>>>>>> e7bf551d183c050600ec9dcc8286f09bda897751

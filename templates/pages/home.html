@@ -5,11 +5,22 @@
 
 
 <link rel="shortcut icon" href=" {% static 'image/logo.png' %}">
+
 <!-- home section starts  -->
 
 <section class="home">
     {% if user.is_authenticated %}
     <div class="content">
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.tags == "success" %}
+    <span id="success">
+        {{message}}
+    </span>
+       
+    {% endif %}
+    {% endfor %}
+    {% endif %}
         <h3 class="medititle" style="margin-button:0px">Mediserv+</h3>
         <h1 class="get-title" style="text-align:left; margin-top:0px;">Get your skin a little love</h1>
         <a href="{% url 'Home:shop' %}" class="btnshop" style="margin:0; margin-top:1em">Shop Now</a>
@@ -192,6 +203,7 @@
     <div class="swiper medicine-slider">
 
         <div class="swiper-wrapper">
+
             {% for p in medicine %}
             <form action="{% url 'Home:addcart' p.id  %}" method="POST">
             {% csrf_token %}
@@ -445,9 +457,6 @@
     
     </section>    
 
-    <!-- skin section ends -->
-
-    <!-- deAl section starts  -->
 
     <section class="deal">
 
@@ -463,8 +472,15 @@
 
     </section>
 
+    
+
     <!-- deal section ends -->
 
-    {% endif %}
+    <!-- {% endif %}
+    <script>
+        setTimeout(function () {
+           $('#success').fadeOut('fast');
+       }, 2000);
+   </script> -->
 
 {% endblock %}

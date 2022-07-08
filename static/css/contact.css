@@ -48,7 +48,7 @@ section {
     color: #eb4d4b;
 }
 
-.btn {
+.Contact{
     display: inline-block;
     margin-top: 1rem;
     padding: .9rem 3rem;
@@ -59,7 +59,7 @@ section {
     cursor: pointer;
 }
 
-.btn:hover {
+.Contact:hover {
     background: #130f40;
 }
 .btn2 {

@@ -1,5 +1,9 @@
 from django.contrib import admin
+<<<<<<< HEAD
 from .models import Blog,Portfolio, prescription,UserProfile,cashdevlivery
+=======
+from .models import Blog,Portfolio, cashdevlivery, prescription
+>>>>>>> e7bf551d183c050600ec9dcc8286f09bda897751
 from .models import Product
 from .models import Cart, CartItem
 
@@ -33,9 +37,14 @@ class CartItemAdmin(admin.ModelAdmin):
 admin.site.register(CartItem, CartItemAdmin)
 
 admin.site.register(prescription)
+<<<<<<< HEAD
 admin.site.register(cashdevlivery)
 
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
 	list_display = ('id', 'user')
 
+=======
+
+admin.site.register(cashdevlivery)
+>>>>>>> e7bf551d183c050600ec9dcc8286f09bda897751
