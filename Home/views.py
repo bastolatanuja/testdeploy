@@ -1,13 +1,16 @@
+from audioop import reverse
+from dataclasses import field
+from multiprocessing import context
 from tokenize import Number
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import FileResponse, HttpResponseRedirect
 from django.shortcuts import redirect, get_object_or_404, render, HttpResponse
 from django.urls import reverse_lazy
 from django.urls.conf import include
 from django.contrib import messages
 from django.contrib.auth import  authenticate , get_user_model , login , logout
 from django.contrib.auth.models import User ,auth
-from Home.forms import CheckoutItems, Prescription, UserResetForm, UserResgistrationForm, UserUpdateForm, changeDpForm
+from Home.forms import Cashdelivery, Prescription, UserResetForm, UserResgistrationForm, UserUpdateForm, changeDpForm
 from django.views import generic
 from django.shortcuts import render 
 from django.core.mail import send_mail, EmailMessage
@@ -29,6 +32,13 @@ from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from django.views import generic
+from django.views.generic.edit import UpdateView
+from django.http import FileResponse
+import io
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import inch
+from reportlab.lib.pagesizes import letter
+
 
 User = get_user_model()
 
@@ -264,10 +274,6 @@ def edit_profile(request):
             return redirect('/dash/')
     return render(request,'pages/editprofile.html',{'user':user})
 
-
-
-def get_object(self):
-    return self.request.user
 def _cart_id(request):
     cart_id = request.session.session_key
     if not cart_id:
@@ -308,14 +314,6 @@ def remove(request, product_id):
     return redirect("Home:cart")
     
 def cart(request, cart_items=None):
-    if request.method == "POST":
-        product = CheckoutItems(request.POST, request.FILES)
-        if product.is_valid():
-            try:
-                product.save()
-                return redirect("Home:prescription")
-            except:
-                print(request.POST)
     try:
         if request.user.is_authenticated:
             cart_items = CartItem.objects.all().filter(user=request.user)
@@ -347,13 +345,116 @@ def searchresult(request):
 
 
 def cartdash(request):
-    return render(request,'pages/cartdash.html')    
+    grandtotal=0
+    user = request.user
+    cartItems = CartItem.objects.filter(user=user)
+    for items in cartItems:
+        grandtotal += (items.product.price * items.number_of_products)
+    
+    obj = Cart.objects.get(cart_id=items.cart)
+    obj.grandtotal = grandtotal
+    obj.save()
+    context = {'grandtotal':grandtotal}
+    return render(request,'pages/cartdash.html',context)    
 
 def payments(request):
     return render(request,'pages/payments.html')  
 
-class ChangeDP(generic.UpdateView):
+def cashdelivery(request):
+    if request.method == "POST":
+        form = Cashdelivery(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                form.save()
+                print('Messsage sent suyccessful')
+                messages.success(request, 'Item successfully Orderd.')
+                return redirect("Home:home")                
+            except:
+                print("Invalid")
+                
+    return render(request, 'pages/cashdelivery.html')
+
+def delete_user(request, user_id):
+    user = User.objects.get(id=user_id)
+    user.delete()
+    messages.add_message(request, messages.SUCCESS, 'Úser is deleted successfully')
+    return redirect('Home:register')
+    
+class updateDPview(UpdateView):
     model = UserProfile
-    template_name = "pages/dash.html"
-    fields="__all__"
-    success_url=reverse_lazy('Home:dash')
+    form_class = changeDpForm
+    template_name =  'pages/dash.html'
+    success_url = 'Home:dash'
+
+def editDPView(request):
+    user = request.user
+    if request.method=='POST':
+            newImage = request.FILES['avatar']
+            obj = UserProfile.objects.get(user=user)
+            obj.avatar = newImage
+            obj.save()
+            return render(request,'pages/dash.html')
+    else:
+        return render(request, 'pages/dash.html')
+
+
+def updateCart(request,pk):
+    
+    obj = CartItem.objects.get(product_id=pk)
+    if request.method == 'POST':
+        newNumber = request.POST.get('number')
+        obj.number_of_products = newNumber
+        obj.save()
+        return render(request,'pages/cart.html')
+    else:
+        return render(request,'pages/editcart.html/pk')
+
+class updateCartView(UpdateView):
+    model = CartItem
+    template_name = "pages/editCart.html"
+    fields= ('number_of_products',)
+    
+    def get_success_url(self):
+                return reverse_lazy('Home:cart')
+    
+
+def invoice(request):
+    buf = io.BytesIO()
+    c = canvas.Canvas(buf,pagesize=letter,bottomup=0)
+    textOb = c.beginText()
+    textOb.setTextOrigin(inch,inch)
+    textOb.setWordSpace(20)
+    textOb.setFont("Helvetica",16)
+
+    
+    grandtotal=0
+    user = request.user
+    cartItems = CartItem.objects.filter(user=user)
+    for items in cartItems:
+        grandtotal += (items.product.price * items.number_of_products)
+    
+    obj = Cart.objects.get(cart_id=items.cart)
+    obj.grandtotal = grandtotal
+  
+    cartProducts = CartItem.objects.filter(user=user)
+    lines = cartProducts.values_list('product','number_of_products','user','cart')
+    
+
+    textOb.textLine("Order Invoice Mediseve pvt ltd ")
+    textOb.textLine(" ")
+    textOb.textLine(" ")
+    textOb.textLine("(product id,no of product, userID, cartid)")
+    #for line in lines:
+        #textOb.textLine(str(line))
+    for skil in lines:
+        textOb.textLine(str(skil))
+    textOb.textLine("-----------------------------------------------------------------------")
+    textOb.textLine("Grand Total-------------------------------------"+str(grandtotal))
+        
+
+    c.drawText(textOb)
+    c.showPage()
+    c.save()
+    buf.seek(0)
+
+    return FileResponse(buf,as_attachment=True,filename='invoice.pdf')

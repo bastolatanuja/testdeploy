@@ -41,6 +41,12 @@ urlpatterns = [
   path("searchresult/", views.searchresult, name="searchresult"),
   path("cartdash/", views.cartdash, name="cartdash"),
   path("payments/", views.payments, name="payments"),
-  path('updateDP/<int:pk>',views.ChangeDP.as_view(),name="updateDP"),
+  path("cashdelivery", views.cashdelivery, name="cashdelivery"),
+
+  path("deleteuser/<int:user_id>", views.delete_user, name="deleteuser"),
+  path('updateDP/<int:pk>',views.updateDPview.as_view(),name="updateDP"),
+  path('changedp/',views.editDPView,name="changedp"),
+  path('editCartItem/<int:pk>/',views.updateCartView.as_view(),name="editCartItem"),
+  path('invoice/',views.invoice,name="invoice"),
 ]
 

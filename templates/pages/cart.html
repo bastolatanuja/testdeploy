@@ -15,7 +15,7 @@
     <div class="structure">
       <a href="{% url 'Home:home' %}"   class="btncont"><b> &#8592 Continue Shopping</b></a>
       <h1>Shopping cart</h1>
-  
+      
       <table id="table">
         <thead>
           <tr>
@@ -28,6 +28,7 @@
             <th>Action</th>
           </tr>
         </thead>
+       
         {% for p in cart_items %}
         <tbody id="all_products">
           <tr>
@@ -35,12 +36,16 @@
               
             <img src="{{ p.product.product_image.url }}" style="width:17%"  alt="">
             </td>
-            <td name="productName">{{ p.product.name }}</td>
+            <td>{{ p.product.name }}</td>
             <td>{{ p.product.price }}</td>
-            <td class="quantity"><input type="number" placeholder="Unit price" min="0" value="1" name="quantity" contenteditable></td>
-            <td class="subtotal">  0</td>
+          
+            <td >{{p.number_of_products}} </td>
+            <td > {{p.number_of_products}}*{{p.product.price}} </td>
             <td class="remove">
-              <a href = "{% url 'Home:remove'  p.id  %}" type=button >Remove</a>
+              <a href = "{% url 'Home:remove'  p.pk  %}" type=button >Remove</a>
+            </td>
+            <td class="edit">
+              <a href = "{% url 'Home:editCartItem' p.pk %}" type=button >Edit</a>
             </td>
 
           </tr>
@@ -49,8 +54,9 @@
         {% endfor %}
            
       </table>
-      <h2>Total : <span id="total_display" name="total">0 </span></h2>
-      <a class="btndanger" type="submit" value="submit">Checkout</a>
+      
+      
+      <a href="{% url 'Home:prescription' %} " class="btndanger">Checkout</a>
       
     </div>
     
@@ -75,89 +81,14 @@
       margin-top: 0rem;
       
       border-radius: .5rem;
-       {% comment %} background: #51b6b6;   {% endcomment %}
+      background: #51b6b6;  
       color: red;
       font-size: 1.4rem;
       cursor: pointer;
       text-decoration:none;
   }
 </style>
-<script>
-     
-{% comment %} document.querySelectorAll(".remove").forEach(removebtn => removebtn.addEventListener("click", removeProduct)); {% endcomment %}
-document.querySelectorAll(".quantity").forEach(qty => qty.addEventListener("change", changeSubtotal));
-total();
 
-// Check if input is empty
-function checkInput(){
-  let nameProduct = document.getElementById("name_product");
-  let priceProduct = document.getElementById("price_product");
-  if (nameProduct.value != "" && priceProduct.value != "") {
-    addProduct();
-    total();
-  }
-}
-
-// Add a product
-function addProduct(){
-  let nameProduct = document.getElementById("name_product");
-  let priceProduct = document.getElementById("price_product");
-
-  let tbody = document.getElementById("all_products");
-  let tr = tbody.insertRow();
-  let td1 = tr.insertCell(0);
-  let td2 = tr.insertCell(1);
-  let td3 = tr.insertCell(2);
-  let td4 = tr.insertCell(3);
-  let td5 = tr.insertCell(4);
-  let td6 = tr.insertCell(5);
-
-  td1.innerHTML = imageProduct.value;
-  td2.innerHTML = nameProduct.value;
-  td3.innerHTML = priceProduct.value;
-  td4.innerHTML = '<input type="number" class="quantity" value="1" min="0">';
-  td5.innerHTML = priceProduct.value;
-  {% comment %} td6.innerHTML = '<button type="button" class="remove">Remove</i></button>'; {% endcomment %}
-
-  td4.addEventListener("change", changeSubtotal);
-  td6.addEventListener("click", removeProduct);
-
-  nameProduct.value = "";
-  priceProduct.value = "";
-}
-
-// Change subtotal
-function changeSubtotal(element) {
-  let price = this.previousElementSibling.innerHTML;
-  let quantity = element.target.value; 
-  let subtotal = parseFloat(price * quantity).toFixed(2);
-  this.nextElementSibling.innerHTML = subtotal;
-  total();
-}
-
-{% comment %} // Remove a product
-function removeProduct() {
-  this.parentElement.parentElement.removeChild(this.parentElement);
-  total();
-} {% endcomment %}
-// Sum total
-function total(){
-  let totalDisplay = document.getElementById("total_display");
-  let sum = 0;
-  let td = document.getElementById("table").getElementsByTagName("td");
-
-  for (let i = 0; i < td.length; i++) {
-    if(td[i].className == "subtotal"){
-    sum += isNaN(td[i].innerHTML) ? 0:parseFloat(td[i].innerHTML);
-
-    }
-     
-  }
-  let total = sum.toFixed(2);
-  totalDisplay.innerHTML = " Nrs. " + total;
- 
-}
-</script>
 {% endblock %}  
 
 

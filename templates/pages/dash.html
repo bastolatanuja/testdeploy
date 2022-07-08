@@ -53,25 +53,27 @@
 <td>
 <section>
 <label for="fileToUpload">
-<i class="fa fa-camera"></i>
-<input type="file" id="fileToUpload" style="visibility:hidden;" accept=".png,.jpg,jpeg,.PNG,.JPEG" name="fileToUpload" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+
+<!--
+  <i class="fa fa-camera"></i>
+  <input type="file" id="fileToUpload" style="visibility:hidden;" accept=".png,.jpg,jpeg,.PNG,.JPEG" name="fileToUpload" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">-->
 </label>
-<img src="{{user.userprofile.avatar.url}}" id="blah" alt="Avatar">
+<img src="{{user.userprofile.avatar.url}}" alt="...">
+
 
 </section>
-<form  method="POST"  enctype="multipart/form-data">
+<form id="editForm" method="POST" action="/changedp/" enctype="multipart/form-data">
   {% csrf_token %}
-  {{form.as_p}}
-  {{form.media}}
-  <!--<input type="file" name="avatar">
+  <input type="file" name="avatar">
   
   
     
-  <input class='btn btnPrimary float-right col-3' type="submit" value="Submit">-->
-  <button class="btn btn-secondary">update</button>
-</form><br> 
+  <input class='btn btn-light' type="submit" value=" now Click here">
+</form><br>
+ 
 <br><br>
-<a href="{% url 'Home:resetpassword' %}" class="btn">Change Password</a>  <a href="#" class="btndanger">Delete Account</a>
+<a href="{% url 'Home:resetpassword' %}" class="btn">Change Password</a>  
+<a href="/deleteuser/{{ request.user.id}}" class="btndanger">Delete Account</a>
  
 </td>
 <td>

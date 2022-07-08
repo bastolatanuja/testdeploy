@@ -99,28 +99,53 @@ class UserProfile(models.Model):
 
 class Cart(models.Model):
     cart_id = models.CharField(max_length=250, blank=True)
+    grandTotal = models.IntegerField(default=0,blank=False,null=False)
     date_added = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return self.cart_id
+    def get_absolute_url(self):
+        return reverse('Home:home')
 
 
 class CartItem(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    number_of_products = models.IntegerField(default=1,blank=False,null=False)
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
     is_active = models.BooleanField(default=True)
     
-
-
-    
     def __unicode__(self):
         return self.product
-
+    def get_absolute_url(self):
+        return reverse('Home:home')
 
 class prescription(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     image = models.FileField(upload_to="prescription")
+    def get_absolute_url(self):
+        return reverse('Home:home')
+
+class cashdevlivery(models.Model):
+    firstname = models.CharField(max_length=50,db_index=True)
+    lastname = models.CharField(max_length=50,db_index=True)
+    address = models.CharField(max_length=50,db_index=True)
+    contact = models.CharField(max_length=50,db_index=True)
+    def get_absolute_url(self):
+        return reverse('Home:home')
+
+
+class UserProfile(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'User Profiles'
+        verbose_name = 'User Profile'
+    
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    avatar = models.ImageField(blank=True, null=True, upload_to="avatar")
+    
+    def get_absolute_url(self):
+        return reverse('Home:home')
 
 
 class checkoutItems(models.Model):
