@@ -1,0 +1,58 @@
+{% load static %}
+<!-- header section starts  -->
+
+
+<header class="header pl-5 pr-5">
+
+    <a href="{% url 'Home:home' %} " class="logo"> Mediserv+</a>
+
+    <nav class="navbar">
+        {% if user.is_authenticated %}
+        <a href="{% url 'Home:home' %}">Home</a>
+        <a href="{% url 'Home:shop' %}">Shop</a>
+        <a href="{% url 'Home:blog' %}">Blogs</a>
+        <a href="{% url 'Home:portfolio' %}">Portfolio</a>
+        <a href="{% url 'Home:ourservices' %}">Our Services</a>
+        <a href="{% url 'Home:aboutus' %}">About Us</a>
+        <a href="{% url 'Home:faq' %}">Help </a>
+        <a href="{% url 'Home:contactus' %}">Contact Us</a>
+        <form class="form-inline" width="50px" action="/searchresult" method="GET">
+            <input name="query" width="50px" id="query" class="form-control" type="search" placeholder="Search" aria-label="Search" required>
+            <button class="btn btn-light my-5 my-sm-0" type="submit"><div id="search-btn" class="fas fa-search"></div></button>
+        </form>
+
+        {% else %}
+
+        <a href="{% url 'Home:home' %}">Home</a>
+        <a href="{% url 'Home:blog' %}">Blogs</a>
+        <a href="{% url 'Home:portfolio' %}">Portfolio</a>
+        <a href="{% url 'Home:ourservices' %}">Our Services</a>
+      
+        {% endif %}
+    </nav>
+    
+
+    <div class="icons">
+        <div id="menu-btn" class="fas fa-bars"></div>
+         
+        {% if user.is_authenticated %}
+        <a href= "{% url 'Home:cart' %}" class="fas fa-shopping-cart"></a>
+        <div id="user-btn" class="fas fa-user"></div>
+      
+        {% else %}
+        <a href= "{% url 'Home:login' %}" class="fas fa-user"></a>
+        {% endif %}
+    </div>
+    
+    <div class="user-box">
+        <p>Username : {{ request.user.first_name}} <span>
+
+            </span></p>
+        <p>Email : {{ request.user.email}}<span>
+
+            </span></p>
+        <a href="{% url 'Home:dash' %}" class="option-btn">Dashboard</a>
+        <a href="{% url 'Home:logout' %}" class="delete-btn">Logout</a>
+        
+    </div>
+</header>

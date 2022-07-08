@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Prescription {% endblock %}
+{% block content %}
+    <!-- header section ends -->
+
+    <style>
+        .btnprec {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: .9rem 3rem;
+            border-radius: .5rem;
+            background: #51b6b6;
+            color: #fff;
+            font-size: 1.7rem;
+            cursor: pointer;
+        }
+        
+        .btnprec:hover {
+            background: #0b0b0b;
+            text-decoration: none;
+        }
+    </style>
+
+    <!-- contact section starts  -->
+
+    <section class="contact">
+
+        <h1 class="heading"> Prescription <span>Form</span> </h1>
+
+        <div class="row">
+
+
+
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h3>Prescription Form</h3>
+                <input type="text"  name="user" value="{{user.id}}"class="box">
+                <input type="file" placeholder="image" name = "image" class="box">
+                <input type="submit" value="Send" class="btnprec">
+            </form>
+
+            <div class="image"> 
+                <img src = "{% static 'image/pres.png' %}" alt="">
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- contact section ends -->
+
+{% endblock %}

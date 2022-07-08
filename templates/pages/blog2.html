@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Blog {% endblock %}
+{% block content %}
+
+    <!-- blogs  section starts  -->
+
+    <section class="blog2" id="blog2">
+
+        <div class="image">
+            <img src= "{{object.image.url}}" alt="">
+        </div>
+    
+        <div class="content">
+            <h3 class="title">{{object.name}}</h3>
+            <p>{{object.body}}</p>
+        </div>
+    
+    </section>
+
+    <!-- blogs  section ends -->
+
+    
+{% endblock %}

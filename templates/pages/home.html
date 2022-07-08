@@ -1,0 +1,486 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock %}
+{% block content %}
+{% load static %}
+
+
+<link rel="shortcut icon" href=" {% static 'image/logo.png' %}">
+
+<!-- home section starts  -->
+
+<section class="home">
+    {% if user.is_authenticated %}
+    <div class="content">
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.tags == "success" %}
+    <span id="success">
+        {{message}}
+    </span>
+       
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+        <h3 class="medititle" style="margin-button:0px">Mediserv+</h3>
+        <h1 class="get-title" style="text-align:left; margin-top:0px;">Get your skin a little love</h1>
+        <a href="{% url 'Home:shop' %}" class="btnshop" style="margin:0; margin-top:1em">Shop Now</a>
+    </div>
+
+    <div class="image">
+        <img src="{% static 'image/homemain.png' %}" alt="">
+    </div>
+
+    {% else %}
+
+    <div class="content">
+        <h3 class="medititle" style="margin-button:0px">Mediserv+</h3>
+        <h1 style="text-align:left; margin-top:0px" class="get-title">Get your skin a little love</h1>
+        <a href="{% url 'Home:login' %}" class="btnshop">Shop Now</a>
+    </div>
+
+    <div class="image">
+        <img src="{% static 'image/homemain.png' %}" alt="">
+    </div>
+
+    {% endif %}
+
+</section>
+
+<!-- home section ends -->
+
+<!-- recently viewed section starts -->
+
+{% if user.is_authenticated %}
+<section class="rv" id="rv">
+
+    <h1 class="heading"> <span>Recently</span> Viewed </h1>
+
+    <div class="swiper rv-slider">
+
+        <div class="swiper-wrapper">
+            {% for p in recently_viewed %}
+            <form action="{% url 'Home:addcart' p.id  %}" method="POST">
+            {% csrf_token %}
+            <div class="swiper-slide slide">
+                <a href="#" class="btn2">{{ p.available }}</a>
+                {% if p.available == 'In Stock' %}
+                <div class="icons">
+                    <button type="submit" style="
+                        font-size: 2rem;
+                        height: 5rem;
+                        width: 5rem;
+                        line-height: 5rem;
+                        text-align: center;
+                        color: #51b6b6;
+                        background: #fff;
+                        border-radius: 0.5rem;"
+                         class="btn-cart fas fa-shopping-cart"> 
+                    </button>
+                    <a href="{% url 'Home:productdetails' p.id %}" class="fas fa-info-circle"></a>
+                </div>
+                {% else %}
+                <div class="icons">
+                    <button disabled type="submit" style="
+                        font-size: 2rem;
+                        height: 5rem;
+                        width: 5rem;
+                        line-height: 5rem;
+                        text-align: center;
+                        color: #51b6b6;
+                        background: #fff;
+                        border-radius: 0.5rem;"
+                         class="btn-cart fas fa-shopping-cart"> 
+                    </button>
+                    <a href="{% url 'Home:productdetails' p.id %}" class="fas fa-info-circle"></a>
+                </div>
+                {% endif %}
+                <div class="image">
+                    <img src="{{ p.product_image.url }}" alt="">
+                </div>
+                <div class="content">
+                    <h3>{{p.name}}</h3>
+                    <h2>Rs.{{p.price}}</h3>
+                </div>
+            </div>
+            </form>
+            {% endfor %}
+            
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+    </div>
+
+</section>
+    
+
+<!-- recently viewed section ends  -->
+
+<!-- video section starts -->
+
+<section class="about" id="about">
+
+    <div class="video-container" data-aos="fade-right" data-aos-delay="300">
+        <video src= "{% static 'image/The best care for your skin..mp4' %}" muted autoplay loop class="video"></video>
+    </div>
+</section>
+
+<!-- video section ends -->
+
+<!-- Featured product section starts -->
+<section class="featured" id="featured">
+
+    <h1 class="heading"> <span>Our</span> Featured Products</h1>
+
+    <div class="swiper featured-slider">
+
+        <div class="swiper-wrapper">
+            {% for p in featured %}
+            <form action="{% url 'Home:addcart' p.id  %}" method="POST">
+            {% csrf_token %}
+            <div class="swiper-slide slide">
+                <a href="#" class="btn2">{{ p.available }}</a>
+                {% if p.available == 'In Stock' %}
+                <div class="icons">
+                    <button type="submit" style="
+                        font-size: 2rem;
+                        height: 5rem;
+                        width: 5rem;
+                        line-height: 5rem;
+                        text-align: center;
+                        color: #51b6b6;
+                        background: #fff;
+                        border-radius: 0.5rem;"
+                         class="btn-cart fas fa-shopping-cart"> 
+                    </button>
+                    <a href="{% url 'Home:productdetails' p.id %}" class="fas fa-info-circle"></a>
+                </div>
+                {% else %}
+                <div class="icons">
+                    <button disabled type="submit" style="
+                        font-size: 2rem;
+                        height: 5rem;
+                        width: 5rem;
+                        line-height: 5rem;
+                        text-align: center;
+                        color: #51b6b6;
+                        background: #fff;
+                        border-radius: 0.5rem;"
+                         class="btn-cart fas fa-shopping-cart"> 
+                    </button>
+                    <a href="{% url 'Home:productdetails' p.id %}" class="fas fa-info-circle"></a>
+                </div>
+                {% endif %}
+                <div class="image">
+                    <img src="{{ p.product_image.url }}" alt="">
+                </div>
+                <div class="content">
+                    <h3>{{p.name}}</h3>
+                    <h2>Rs.{{p.price}}</h3>
+                </div>
+            </div>
+            </form>
+            {% endfor %}
+
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+    </div>
+
+</section>
+
+<!-- Featured product section ends -->
+
+<!-- skin section starts -->
+
+<section class="medicine" id="medicine">
+
+    <h1 class="heading"> <span>Our</span> Medicine Products </h1>
+
+    <div class="swiper medicine-slider">
+
+        <div class="swiper-wrapper">
+
+            {% for p in medicine %}
+            <form action="{% url 'Home:addcart' p.id  %}" method="POST">
+            {% csrf_token %}
+            <div class="swiper-slide slide">
+                <a href="#" class="btn2">{{ p.available }}</a>
+                {% if p.available == 'In Stock' %}
+                <div class="icons">
+                    <button type="submit" style="
+                        font-size: 2rem;
+                        height: 5rem;
+                        width: 5rem;
+                        line-height: 5rem;
+                        text-align: center;
+                        color: #51b6b6;
+                        background: #fff;
+                        border-radius: 0.5rem;"
+                         class="btn-cart fas fa-shopping-cart"> 
+                    </button>
+                    <a href="{% url 'Home:productdetails' p.id %}" class="fas fa-info-circle"></a>
+                </div>
+                {% else %}
+                <div class="icons">
+                    <button disabled type="submit" style="
+                        font-size: 2rem;
+                        height: 5rem;
+                        width: 5rem;
+                        line-height: 5rem;
+                        text-align: center;
+                        color: #51b6b6;
+                        background: #fff;
+                        border-radius: 0.5rem;"
+                         class="btn-cart fas fa-shopping-cart"> 
+                    </button>
+                    <a href="{% url 'Home:productdetails' p.id %}" class="fas fa-info-circle"></a>
+                </div>
+                {% endif %}
+                <div class="image">
+                    <img src="{{ p.product_image.url }}" alt="">
+                </div>
+                <div class="content">
+                    <h3>{{p.name}}</h3>
+                    <h2>Rs.{{p.price}}</h3>
+                </div>
+            </div>
+            </form>
+            {% endfor %}
+
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+    </div>
+
+</section>
+
+<!-- medicine section ends -->
+
+<!-- skin section starts -->
+
+<section class="skin" id="skin">
+
+    <h1 class="heading"> <span>Our</span> Skin Products </h1>
+
+    <div class="swiper skin-slider">
+
+        <div class="swiper-wrapper">
+            {% for p in skin %}
+            <form action="{% url 'Home:addcart' p.id  %}" method="POST">
+            {% csrf_token %}
+            <div class="swiper-slide slide">
+                <a href="#" class="btn2">{{ p.available }}</a>
+                {% if p.available == 'In Stock' %}
+                <div class="icons">
+                    <button type="submit" style="
+                        font-size: 2rem;
+                        height: 5rem;
+                        width: 5rem;
+                        line-height: 5rem;
+                        text-align: center;
+                        color: #51b6b6;
+                        background: #fff;
+                        border-radius: 0.5rem;"
+                         class="btn-cart fas fa-shopping-cart"> 
+                    </button>
+                    <a href="{% url 'Home:productdetails' p.id %}" class="fas fa-info-circle"></a>
+                </div>
+                {% else %}
+                <div class="icons">
+                    <button disabled type="submit" style="
+                        font-size: 2rem;
+                        height: 5rem;
+                        width: 5rem;
+                        line-height: 5rem;
+                        text-align: center;
+                        color: #51b6b6;
+                        background: #fff;
+                        border-radius: 0.5rem;"
+                         class="btn-cart fas fa-shopping-cart"> 
+                    </button>
+                    <a href="{% url 'Home:productdetails' p.id %}"  class="fas fa-info-circle"></a>
+                </div>
+                {% endif %}
+                <div class="image">
+                    <img src="{{ p.product_image.url }}" alt="">
+                </div>
+                <div class="content">
+                    <h3>{{p.name}}</h3>
+                    <h2>Rs.{{p.price}}</h3>
+                </div>
+            </div>
+            </form>
+            {% endfor %}
+
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+    </div>
+
+</section>
+
+<!-- skin section ends -->
+
+<!-- deAl section starts  -->
+
+<section class="deal">
+
+    <div class="image">
+        <img src="{% static 'image/pngwing.com (4).png' %}" alt="">
+    </div>
+
+    <div class="content">
+        <span>Fleure Beauty's</span>
+        <h3>Sunkissed Collection</h3>
+        <a href="{% url 'Home:shop' %}" class="btnbuy">Buy Here</a>
+    </div>
+
+</section>
+
+<!-- deal section ends -->
+
+
+</section>
+{% else %}
+
+
+    <!-- feature section starts -->
+
+    <section class="featured" id="featured">
+
+        <h1 class="heading"> <span>Our</span> Featured Products</h1>
+    
+        <div class="swiper featured-slider">
+    
+            <div class="swiper-wrapper">
+                {% for p in featured %}
+                <form action="{% url 'Home:login' %}">
+                <div class="swiper-slide slide">
+                    <a href="#" class="btn2">{{ p.available }}</a>
+                <div class="icons">
+                    <button type="submit" style="
+                        font-size: 2rem;
+                        height: 5rem;
+                        width: 5rem;
+                        line-height: 5rem;
+                        text-align: center;
+                        color: #51b6b6;
+                        background: #fff;
+                        border-radius: 0.5rem;"
+                         class="btn-cart fas fa-shopping-cart"> 
+                    </button>
+                    <a href="{% url 'Home:login'  %}" class="fas fa-info-circle"></a>
+                </div>
+                    <div class="image">
+                        <img src="{{ p.product_image.url }}" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>{{p.name}}</h3>
+                        <h2>Rs.{{p.price}}</h3>
+                    </div>
+                </div>
+                </form>
+                {% endfor %}
+    
+            </div>
+    
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+    
+        </div>
+    
+    </section>
+
+    <!-- feature section ends -->
+    
+
+    <section class="about" id="about">
+
+        <div class="video-container" data-aos="fade-right" data-aos-delay="300">
+            <video src= "{% static 'image/The best care for your skin..mp4' %}" muted autoplay loop class="video"></video>
+        </div>
+    </section>
+
+
+    <!-- skin section starts -->
+
+    <section class="skin" id="skin">
+
+        <h1 class="heading"> <span>Our</span> Skin Products </h1>
+    
+        <div class="swiper skin-slider">
+    
+            <div class="swiper-wrapper">
+                {% for p in skin %}
+                <form action="{% url 'Home:login'  %}">
+                <div class="swiper-slide slide">
+                <a href="#" class="btn2">{{ p.available }}</a>
+                <div class="icons">
+                    <button type="submit" style="
+                        font-size: 2rem;
+                        height: 5rem;
+                        width: 5rem;
+                        line-height: 5rem;
+                        text-align: center;
+                        color: #51b6b6;
+                        background: #fff;
+                        border-radius: 0.5rem;"
+                        class="btn-cart fas fa-shopping-cart"> 
+                    </button>
+                    <a href="{% url 'Home:login'  %}" class="fas fa-info-circle"></a>
+                </div>
+                    <div class="image">
+                        <img src="{{ p.product_image.url }}" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>{{p.name}}</h3>
+                        <h2>Rs.{{p.price}}</h3>
+                    </div>
+                </div>
+                </form>
+                {% endfor %}
+    
+            </div>
+    
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+    
+        </div>
+    
+    </section>    
+
+
+    <section class="deal">
+
+        <div class="image">
+            <img src="{% static 'image/pngwing.com (4).png' %}" alt="">
+        </div>
+
+        <div class="content">
+            <span>Fleure Beauty's</span>
+            <h3>Sunkissed Collection</h3>
+            <a href="{% url 'Home:login' %}" class="btnbuy">Buy Here</a>
+        </div>
+
+    </section>
+
+    
+
+    <!-- deal section ends -->
+
+    <!-- {% endif %}
+    <script>
+        setTimeout(function () {
+           $('#success').fadeOut('fast');
+       }, 2000);
+   </script> -->
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Blog {% endblock %}
+{% block content %}
+
+    <!-- blogs  section starts  -->
+
+    <section class="blogs" id="blogs">
+
+        <h1 class="heading"> Our <span>Blogs</span></h1>
+
+        <div class="swiper blogs-slider">
+
+            <div class="swiper-wrapper">
+                {% for obj in object_list %}
+                <div class="swiper-slide slide">
+                    <div class="image">
+                        <img src="{{obj.image.url}}" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>{{obj.name}}</h3>
+                        <p>{{obj.description}}</p>
+                        <a href="{% url 'Home:blog_two' slug=obj.slug %}" class="btn">Read more</a>
+                        <div class="icons">
+                            <a href="#"> <i class="fas fa-calendar"></i>{{obj.timestamp}} </a>
+                            <a href="#"> <i class="fas fa-user"></i> By {{obj.author}} </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+
+        </div>
+
+    </section>
+
+    <!-- blogs  section ends -->
+
+
+{% endblock %}

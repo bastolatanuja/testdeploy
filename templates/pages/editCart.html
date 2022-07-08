@@ -1,0 +1,62 @@
+
+{% load static %}
+{% block title %} Cart {% endblock %}
+{% block content %}
+
+
+<link rel="shortcut icon" href=" {% static 'image/logo.png' %}">
+ <!--TITLE-->
+<title>Mediserv+ | Cart</title>
+
+<link rel="shortcut icon" href=" {% static 'image/logo.png' %}">
+
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+<div class="container flex">
+    <div class="structure">
+      <a href="{% url 'Home:home' %}"   class="btncont"><b> &#8592 Continue Shopping</b></a>
+      <h1>Shopping cart</h1>
+      
+     
+      <form method="POST" enctype="multipart/form-data" >
+        {% csrf_token %}
+        {{form.as_p}}
+        {{form.as_media}}
+        <button class="btn btn-secondary">UpdaaSAte</button>
+      </form>
+      
+      
+    </div>
+    
+  </div>
+
+<style>
+    
+    .btndanger {
+        display: inline-block;
+        margin-top: 1rem;
+        padding: .9rem 1rem;
+        border-radius: .5rem;
+        background: #51b6b6;
+        color: black;
+        font-size: 1.4rem;
+        cursor: pointer;
+        text-decoration:none;
+    }
+
+    .btncont {
+      display: inline-block;
+      margin-top: 0rem;
+      
+      border-radius: .5rem;
+      background: #51b6b6;  
+      color: red;
+      font-size: 1.4rem;
+      cursor: pointer;
+      text-decoration:none;
+  }
+</style>
+
+{% endblock %}  
+
+
+ 

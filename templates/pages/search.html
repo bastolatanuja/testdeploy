@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Search {% endblock %}
+{% block content %}
+<!-- <div class="container">
+    <div class="row">'
+        
+        <div class="col-md-12">
+            <h3>Search Results for <span class="text-info">"{{request.GET.query}}"</span></h3>
+            <hr>
+            
+
+            <div class="container pt-5 pb-5">
+                <div class="row pt-5 pb-5">
+                    {% for p in products %}
+                    <div class="col-lg-4">
+                       <img class="thumbnail" src="{{p.product_image.url}}" width="200px" height="200px">
+                        <div class="box-element product">
+                            <h6><strong>{{p.name}}</strong></h6>
+                            <hr>
+                            <a class="btn btn-outline-success" href="{% url 'Home:addcart' p.id  %}">Buy</a>
+                            <a class="btn btn-outline-success" href="{% url 'Home:productdetails' p.id %}">View</a>
+                            <h4 style="display: inline-block; float: right"><strong>Rs{{p.price}}</strong></h4>
+                
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                </div>
+                
+            
+        </div>
+    </div>
+</div> -->
+
+
+<!-- Featured product section starts -->
+<br>
+<br>
+<br>
+<br>
+
+<section class="featured" id="featured">
+
+    <h3>Search Results for <span class="text-info">"{{request.GET.query}}"</span></h3>
+
+    <div class="swiper featured-slider">
+
+        <div class="swiper-wrapper">
+            {% for p in products %}
+            <form action="{% url 'Home:addcart' p.id  %}" method="POST">
+            {% csrf_token %}
+            <div class="swiper-slide slide">
+                <a href="#" class="btn2">{{ p.available }}</a>
+                {% if p.available == 'In Stock' %}
+                <div class="icons">
+                    <button type="submit" style="
+                        font-size: 2rem;
+                        height: 5rem;
+                        width: 5rem;
+                        line-height: 5rem;
+                        text-align: center;
+                        color: #51b6b6;
+                        background: #fff;
+                        border-radius: 0.5rem;"
+                         class="btn-cart fas fa-shopping-cart"> 
+                    </button>
+                    <a href="{% url 'Home:productdetails' p.id %}" class="fas fa-info-circle"></a>
+                </div>
+                {% else %}
+                <div class="icons">
+                    <button disabled type="submit" style="
+                        font-size: 2rem;
+                        height: 5rem;
+                        width: 5rem;
+                        line-height: 5rem;
+                        text-align: center;
+                        color: #51b6b6;
+                        background: #fff;
+                        border-radius: 0.5rem;"
+                         class="btn-cart fas fa-shopping-cart"> 
+                    </button>
+                    <a href="{% url 'Home:productdetails' p.id %}" class="fas fa-info-circle"></a>
+                </div>
+                {% endif %}
+                <div class="image">
+                    <img src="{{ p.product_image.url }}" alt="">
+                </div>
+                <div class="content">
+                    <h3>{{p.name}}</h3>
+                    <h2>Rs.{{p.price}}</h3>
+                </div>
+            </div>
+            </form>
+            {% endfor %}
+
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+    </div>
+
+</section>
+
+<!-- Featured product section ends -->
+{% endblock %}

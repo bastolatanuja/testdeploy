@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} About Us {% endblock %}
+{% block content %}
+
+    <!-- team section starts -->
+    <section class="team">
+
+        <h1 class="heading"> Our <span>Team</span> </h1>
+
+        <div class="swiper team-slider">
+
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide slide">
+                    <div class="image">
+                        <img src= "{% static 'image/tanuja.jpg' %}" alt="">
+                        <div class="share">
+                            <a href="#" class="fab fa-facebook-f"></a>
+                            <a href="#" class="fab fa-instagram"></a>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h3>Tanuja bastola</h3>
+                        <span>Scrum Master</span>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <div class="image">
+                        <img src="{% static 'image/anup.png' %}"alt="">
+                        <div class="share">
+                            <a href="#" class="fab fa-facebook-f"></a>
+                            <a href="#" class="fab fa-instagram"></a>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h3>Anup Burlakoti</h3>
+                        <span>Group Member</span>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <div class="image">
+                        <img src="{% static 'image/ishwor.jpg' %}" alt="">
+                        <div class="share">
+                            <a href="#" class="fab fa-facebook-f"></a>
+                            <a href="#" class="fab fa-instagram"></a>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h3>Ishwor Khadka</h3>
+                        <span>Group Member</span>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <div class="image">
+                        <img src="{% static 'image/nitesh.jpg' %}" alt="">
+                        <div class="share">
+                            <a href="#" class="fab fa-facebook-f"></a>
+                            <a href="#" class="fab fa-instagram"></a>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h3>Nitesh Yadav</h3>
+                        <span>Group Member</span>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <div class="image">
+                        <img src= "{% static 'image/kishan.jpg' %}" alt="">
+                        <div class="share">
+                            <a href="#" class="fab fa-facebook-f"></a>
+                            <a href="#" class="fab fa-instagram"></a>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h3>Kishan Jaiswal</h3>
+                        <span>Group Member</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- team section ends -->
+
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+{% endblock %}

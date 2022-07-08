@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Shop {% endblock %}
+{% block content %}
+
+    <!-- products section starts  -->
+
+    <section class="products" id="products">
+
+        <h1 class="heading"> Our <span> Products </span> </h1>
+
+        {% comment %} <div class="filter-buttons">
+            <div class="buttons active" data-filter="all">All</div>
+            <div class="buttons" data-filter="medicines">Medicines</div>
+            <div class="buttons" data-filter="skincare">Skin Cares</div>
+            <div class="buttons" data-filter="haircare">Hair Cares</div>
+        </div> {% endcomment %}
+
+        <div class="box-container">
+            {% for p in products %}
+            <form action="{% url 'Home:addcart' p.id  %}" method="POST">
+            {% csrf_token %}
+            <div class="box" data-item="medicines">
+                <a href="#" class="btn2">{{ p.available }}</a>
+                {% if p.available == 'In Stock' %}
+                <div class="icons">
+                    <button type="submit" style="
+                        font-size: 2rem;
+                        height: 5rem;
+                        width: 5rem;
+                        line-height: 5rem;
+                        text-align: center;
+                        color: #51b6b6;
+                        background: #fff;
+                        border-radius: 0.5rem;"
+                         class="btn-cart fas fa-shopping-cart"> 
+                    </button>
+                    <a href="{% url 'Home:productdetails' p.id %}"  class="fas fa-info-circle"></a>
+                </div>
+                {% else %}
+                <div class="icons">
+                    <button disabled type="submit" style="
+                        font-size: 2rem;
+                        height: 5rem;
+                        width: 5rem;
+                        line-height: 5rem;
+                        text-align: center;
+                        color: #51b6b6;
+                        background: #fff;
+                        border-radius: 0.5rem;"
+                         class="btn-cart fas fa-shopping-cart"> 
+                    </button>
+                    <a href="{% url 'Home:productdetails' p.id %}"  class="fas fa-info-circle"></a>
+                </div>
+                {% endif %}
+                <div class="image">
+                    <img src="{{ p.product_image.url }}"  alt="">
+                </div>
+                <div class="content">
+                    <h3>{{p.name}}</h3>
+                    <h2>Rs.{{p.price}}</h3>
+                </div>
+            </div>
+            </form>
+            {% endfor %}
+        </div>
+
+    </section>
+
+    <!-- products section ends -->
+
+{% endblock %}

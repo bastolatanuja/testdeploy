@@ -1,0 +1,42 @@
+ 
+{% load static %}
+ 
+{% block content %}
+ 
+<link rel="shortcut icon" href=" {% static 'image/logo.png' %}">
+<link rel="stylesheet" href="{% static 'css/editprofile.css' %}">
+<title>
+  Mediserv+ | Edit Profile
+</title>
+
+<body>
+
+      <h1 class="heading"> Edit <span> Profile</span> </h1>
+         
+       
+        <div class="login-box">
+          <img src="{% static 'image/logo.png' %}" class="avatar">
+              <h1>Edit Your Profile Here...</h1>
+                <form method="POST" enctype="multipart/form-data" action="">
+                {% csrf_token %}
+
+                  <input type="text" id="first_name" name="first_name"  value="{{ user.first_name}}" placeholder="First Name" required>
+
+                  <input type="text" id="last_name" name="last_name"  value="{{ request.user.last_name}}" placeholder="Last Name" required>
+                 
+                  <input type="text" id="username" name="username"  value="{{ request.user.username}}" placeholder="Username" required>
+                  
+                  <input type="email" id="email" name="email" value="{{ request.user.email}}"   placeholder="Email" required>
+                  
+                  <input type="submit" name="submit" value="Update">
+                    
+                  </form>
+              
+              
+              </div>
+            </body>      
+ 
+     {% endblock %}
+     
+
+ 

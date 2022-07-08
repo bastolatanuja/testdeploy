@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Our Services {% endblock %}
+{% block content %}
+
+    <!-- our services  section starts  -->
+
+    <section class="services">
+
+        <div class="content">
+            <h3>Ambulance</h3>
+            <h1>Get Ambulance Details</h1>
+            <p>An ambulance is a vehicle equipped to provide emergency care to sick or injured people and to get them to hospital. Ambulances can also be used to transport patients between hospitals.</p>
+            <a href="{% url 'Home:ambulance' %}" class="findambulance">Find Ambulance</a>
+        </div>
+
+        <div class="image">
+            <img src= "{% static 'image/a.png' %}">
+        </div>
+
+    </section>
+    <section class="services2">
+
+        <div class="image">
+            <img src="{% static 'image/b.png' %}">
+        </div>
+        <div class="content">
+            <h3>Doctor</h3>
+            <h1>Get Your Doctor Details</h1>
+            <p>A person with a medical degree whose job is to treat people who are ill or hurt.</p>
+            <a href= "{% url 'Home:doctors' %}" class="findambulance">Find Doctor</a>
+        </div>
+
+    </section>
+
+
+    <!-- our services section ends -->
+
+{% endblock %}
