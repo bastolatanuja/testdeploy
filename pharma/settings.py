@@ -99,7 +99,7 @@ DATABASES = {
         'NAME': 'd6sa053m2824rm',
         'USER': 'huvuxmkixkatnm',
         'PASSWORD': '10034f0ae56d68ca09046d6aef2ba5bb8fa50e917067152d975303b9fde29495',
-        'HOST': 'ec2-3-223-169-166.compute-1.amazonaws.com',
+        'HOST': 'ec2-3-223-169-166.compute-1.amazonaws.comm',
         'PORT':'5432',
     }
 }
@@ -152,7 +152,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "mediafiles"
-
+STATICFILES_STORAGE =  'django.contrib.staticfiles.storage.StaticFilesStorage'
 # Messages
 
 from django.contrib.messages import constants as messages
