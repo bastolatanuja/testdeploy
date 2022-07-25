@@ -132,17 +132,7 @@ class cashdevlivery(models.Model):
         return reverse('Home:home')
 
 
-class UserProfile(models.Model):
 
-    class Meta:
-        verbose_name_plural = 'User Profiles'
-        verbose_name = 'User Profile'
-    
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    avatar = models.ImageField(blank=True, null=True, upload_to="avatar")
-    
-    def get_absolute_url(self):
-        return reverse('Home:home')
 
 
 class checkoutItems(models.Model):
@@ -154,11 +144,6 @@ class checkoutItems(models.Model):
     def __unicode__(self):
         return self.checkoutId
 
-class cashdevlivery(models.Model):
-    firstname = models.CharField(max_length=50,db_index=True)
-    lastname = models.CharField(max_length=50,db_index=True)
-    address = models.CharField(max_length=50,db_index=True)
-    contact = models.CharField(max_length=50,db_index=True)
 
 
 
