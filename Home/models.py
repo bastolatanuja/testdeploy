@@ -1,6 +1,3 @@
-from hashlib import blake2b
-from statistics import mode
-from tkinter.tix import Tree
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
