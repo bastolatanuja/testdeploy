@@ -26,7 +26,8 @@ SECRET_KEY = '&*4p@f2^r$2-uwt)9e*51cs3y4i%qo7t%p1n*3v2lnpbtv+l*m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mediserve.herokuapp.com']
 
 
 # Application definition
