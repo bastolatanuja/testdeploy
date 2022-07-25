@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'pharma.urls'
@@ -81,13 +82,24 @@ WSGI_APPLICATION = 'pharma.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'medical',
+#         'USER': 'postgres',
+#         'PASSWORD': '1590',
+#         'HOST': 'localhost',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'medical',
-        'USER': 'postgres',
-        'PASSWORD': '1590',
-        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd6sa053m2824rm',
+        'USER': 'huvuxmkixkatnm',
+        'PASSWORD': '10034f0ae56d68ca09046d6aef2ba5bb8fa50e917067152d975303b9fde29495',
+        'HOST': 'ec2-3-223-169-166.compute-1.amazonaws.com',
+        'PORT':'5432',
     }
 }
 
